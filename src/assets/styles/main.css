@@ -10,7 +10,8 @@
 */
 
 html {
-  
+  font-family: 'carlito', monospace;
+  font-size: 10px;
 }
 
 body {
@@ -31,13 +32,28 @@ body {
 */
 
 .App-header {
-
+  position: relative;
+  width: 100%;
+  height: 8em;
+  border-bottom: 1px solid #000;
 }
 
 .App-header > h1 {
-  text-align: center;
-  align-items: center;
+  position: absolute;
   color: #fff;
+  font-size: 4em;
+  right: 30%;
+  top: 0.4em;
+  margin: 0;
+}
+
+
+.App-logo {
+  position: absolute;
+  width: 20em;
+  height: auto;
+  left: 1em;
+  top: 2em;
 }
 
 /* 
