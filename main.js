@@ -13,7 +13,7 @@ function createWindow () {
   })
 
   mainWindow.loadFile('src/Templates/index.html')
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
