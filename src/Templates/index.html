@@ -9,19 +9,212 @@
 </head>
 <body>
   <div id="App-container">
+    <!-- #############################  Header -Bereich  ######################################## -->
     <header class="App-header">
       <img class="App-logo" src="../assets/img/logo.png" alt="Ordana Logo">
       <h1>Checkup Manager</h1>
     </header>
-    
-    <nav class="App-navigation">
-
-    </nav>
-
+    <!-- #############################  Main -Bereich  ######################################## -->
     <main class="App-main">
+      <form action="#" class="App-form form-hardware">
+        <div class="kunde-info">
+          <h2>Kunde Info:</h2>
+          <div class="auftragErstellung">
+            <label for="auftrag">Auftragsnr.:</label>
+            <input type="text" id="auftrag" name="auftrag" value="123456">
 
+            <label for="datum">Check Datum:</label>
+            <input type="date" id="datum" name="datum" >
+          </div>
+
+          <div class="benutzerDaten">
+            <label for="vorname">Vorname:</label>
+            <input type="text" id="vorname" name="vorname" value="Hanz">
+
+            <label for="nachname">Nachname:</label>
+            <input type="text" id="nachname" name="nachname" value="Werner-Dieter-Müller">
+          </div>
+          
+
+          <div class="benutzerPW">
+            <label for="benutzerName">Anmelde Name:</label>
+            <input type="text" id="benutzerName" name="benutzerName" value="Hansi">
+
+            <label for="benutzerPW">Anmelde Passwort:</label>
+            <input type="text" id="benutzerPW" name="benutzerPW" value="123abc">
+          </div>
+        </div>
+      
+        <div class="hardware">
+          <h2>Hardware / Software</h2>
+
+          <div>
+            <p>
+              <label for="winVersion">Windows Version</label>
+              <input type="text" id="winVersion" name="winVersion" value="10" size="4">
+              32/64 Bit &nbsp; &nbsp;&nbsp;&nbsp;
+              <label for="updateVersion">Update Version</label>
+              <input type="text" id="updateVersion" name="updateVersion" value="21H1" size="4">
+            </p>
+          </div>
+
+          <label for="cpu">CPU:</label>
+          <input type="text" id="cpu" name="cpu" value="Intel">
+          <br/>
+          <label for="ram">RAM:</label>
+          <input type="text" id="ram" name="ram" value="15022262">
+          <br/>
+          <label for="hd">HD:</label>
+          <input type="text" id="hd" name="hd" value="1" size="4">
+          
+          <label for="ssd">SSD:</label>
+          <input type="text" id="ssd" name="ssd" value="2" size="4">
+          <br/>
+          <label for="grafik">Grafik:</label>
+          <input type="text" id="grafik" name="grafik" value="nvidia geforce 710 tx">
+
+          <div class="laufwerke">
+            <h2>Laufwerke:</h2>
+            <p>Belegter Speicherplatz prüfen</p>
+            <!-- Dynamisch erstellt -->
+            <div class="laufwerke-pos">
+              <p>
+                <label for="laufwerk">(Partition 1)</label>
+                <input type="text" id="laufwerkFree" name="laufwerkFree" value="100" size="4">
+                GB frei von 
+                <input type="text" id="laufwerkBenutzt" name="laufwerkBenutzt" value="500" size="4">
+                GB
+              </p>
+            </div>
+            <div class="laufwerke-pos">
+              <p>
+                <label for="laufwerk">(Partition 2)</label>
+                <input type="text" id="laufwerk" name="laufwerk" value="900" size="4">
+                GB frei von 
+                <input type="text" id="laufwerk" name="laufwerk" value="1,5" size="4">
+                TB
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scans">
+          <h2>Auszuführende Arbeiten</h2>
+          <p>Windows Updates: &nbsp;<input type="text" id="winUpdates" name="winUpdates" value="11" size="4"> Aktualisiert</p>
+          <p>Schadsoftware Check: &nbsp;<input type="text" id="schadsoftware" name="schadsoftware" value="12" size="4"> Funde / Funde entfernt</p>
+          <p>Viren Check: &nbsp;<input type="text" id="virenCheck" name="virenCheck" value="42" size="4"> Funde / Funde entfernt</p>
+          <p>CCleaner Bereinigung Check: &nbsp;<input type="text" id="ccleanerB" name="ccleanerB" value="42" size="4">MB</p>
+          <p>
+            CCleaner Registry Check: &nbsp;
+            <input type="text" id="ccleanerR" name="ccleanerR" value="42" size="4">Registry Funde + 
+            <input type="text" id="ccleanerR2" name="ccleanerR2" value="30" size="2">+
+            <input type="text" id="ccleanerR3" name="ccleanerR3" value="30" size="2">
+          </p>
+          <p>1. Systembereinigung: &nbsp;<input type="text" id="1systembereinigung" name="1systembereinigung" value="42" size="4"> MB / GB</p>
+          <p>2. Systembereinigung: &nbsp;<input type="text" id="2systembereinigung" name="2systembereinigung" value="10" size="4"> MB / GB</p>
+          
+          <div class="scans-checkbox">
+            <div>
+              <label for="hochdruck">Gerät innen mit Hochdruck gereinigt</label>
+              <input type="checkbox" name="hochdruck" id="hochdruck">
+            </div>
+            <div>
+              <label for="gereinigt">Gerät außen gereinigt</label>
+              <input type="checkbox" name="gereinigt" id="gereinigt">
+            </div>
+          </div>
+          <textarea name="auffäligkeiten" id="auffäligkeiten" cols="30" rows="10" placeholder="">Auffäligkeiten (Kurzbericht)</textarea>
+        </div>
+
+        <div class="endkontrolle">
+          <h2>Endkontrolle</h2>
+          <div>
+            <p>Alle Lüfter drehen Geräuschlos: &nbsp;
+              Ja<input type="radio" name="lüftergeräusch" id="lüftergeräuschTrue">&nbsp;
+              Nein<input type="radio" name="lüftergeräusch" id="lüftergeräuschFalse">
+            </p>
+          </div>
+          <div>
+            <p>Power/HD in Betrieb LED´s funktionieren: &nbsp;
+              Ja<input type="radio" name="powerLed" id="powerLedTrue">&nbsp;
+              Nein<input type="radio" name="powerLed" id="powerLedFalse">
+            </p>
+          </div>
+          <div>
+            <p>CPU und Speicher werden korrekt erkannt: &nbsp;
+              Ja<input type="radio" name="cpuRam" id="cpuRamTrue">&nbsp;
+              Nein<input type="radio" name="cpuRam" id="cpuRamFalse">
+            </p>
+          </div>
+          <div>
+            <p>HD/SSD wird korrekt erkannt: &nbsp;
+              Ja<input type="radio" name="hdSsd" id="hdSsdTrue">&nbsp;
+              Nein<input type="radio" name="hdSsd" id="hdSsdFalse">
+            </p>
+          </div>
+          <div>
+            <p>Windows ist aktiviert: &nbsp;
+              Ja<input type="radio" name="winAktiv" id="winAktivTrue">&nbsp;
+              Nein<input type="radio" name="winAktiv" id="winAktivFalse">
+            </p>
+          </div>
+          <div>
+            <p>Gerätemanager zeigt keine Ausrufezeichen: &nbsp;
+              Ja<input type="radio" name="gerät" id="gerätTrue">&nbsp;
+              Nein<input type="radio" name="gerät" id="gerätFalse">
+            </p>
+          </div>
+          <div>
+            <p>Front Sound funktioniert: &nbsp;
+              Ja<input type="radio" name="frontSound" id="frontSoundTrue">&nbsp;
+              Nein<input type="radio" name="frontSound" id="frontSoundFalse">
+            </p>
+          </div>
+          <div>
+            <p>Rear Sound funktioniert: &nbsp;
+              Ja<input type="radio" name="rearSound" id="rearSoundTrue">&nbsp;
+              Nein<input type="radio" name="rearSound" id="rearSoundFalse">
+            </p>
+          </div>
+          <div>
+            <p>Front USB funktioniert: &nbsp;
+              Ja<input type="radio" name="frontUSB" id="frontUSBTrue">&nbsp;
+              Nein<input type="radio" name="frontUSB" id="frontUSBFalse">
+            </p>
+          </div>
+          <div>
+            <p>Rear USB funktioniert: &nbsp;
+              Ja<input type="radio" name="rearUSB" id="rearUSBTrue">&nbsp;
+              Nein<input type="radio" name="rearUSB" id="rearUSBFalse">
+            </p>
+          </div>
+          <div>
+            <p>CD/DVD offnet und liest Medien: &nbsp;
+              Ja<input type="radio" name="cdDVD" id="cdDVDTrue">&nbsp;
+              Nein<input type="radio" name="cdDVD" id="cdDVDFalse">
+            </p>
+          </div>
+          <div>
+            <p>LAN Funktioniert: &nbsp;
+              Ja<input type="radio" name="lan" id="lanTrue">&nbsp;
+              Nein<input type="radio" name="lan" id="lanFalse">
+            </p>
+          </div>
+          <div>
+            <p>WLAN Funktioniert: &nbsp;
+              Ja<input type="radio" name="wlan" id="wlanTrue">&nbsp;
+              Nein<input type="radio" name="wlan" id="wlanFalse">
+            </p>
+          </div>
+
+          <button type="" id="kunde-save" class="kunde-save">Daten Speichern</button>
+          <button id="pdfView" class="pdfView">PDF Vorschau</button>
+          <button id="pdfCreate" class="pdfCreate">PDF erstellen</button>
+          
+        </div>
+      </form>
     </main>
-
+    <!-- #############################  Footer -Bereich  ######################################## -->
     <footer class="App-footer">
 
     </footer>
