@@ -12,6 +12,7 @@
 html {
   font-family: 'carlito', monospace;
   font-size: 10px;
+  color: #fff;
 }
 
 body {
@@ -58,16 +59,6 @@ body {
 
 /* 
 #########################################################################
-##########################     APP - Navigation     #####################
-######################################################################### 
-*/
-
-.App-navigation {
-
-}
-
-/* 
-#########################################################################
 ##########################     APP - Main     ###########################
 ######################################################################### 
 */
@@ -75,6 +66,38 @@ body {
 .App-main {
 
 }
+
+.kunde-info {
+  border-bottom: 1px solid #000;
+
+}
+
+.hardware {
+  border-bottom: 1px solid #000;
+
+}
+
+.laufwerke > p {
+  display: inline-block;
+}
+
+.scans {
+  border-bottom: 1px solid #000;
+}
+
+.scans-checkbox > label {
+  display: block;
+}
+
+#auffäligkeiten {
+  display: block;
+}
+
+.endkontrolle {
+  border-bottom: 1px solid #000;
+}
+
+
 
 /* 
 #########################################################################
