@@ -21,10 +21,11 @@
           <h2>Kunde Info:</h2>
           <div class="auftragErstellung">
             <label for="auftrag">Auftragsnr.:</label>
-            <input type="text" id="auftrag" name="auftrag" value="123456">
+            <input type="text" id="auftrag" name="auftrag" value="123456">&nbsp; &nbsp;&nbsp;&nbsp;
 
-            <label for="datum">Check Datum:</label>
-            <input type="date" id="datum" name="datum" >
+            <label for="datum">Check Datum:&nbsp;
+              <span id="datum"></span>
+            </label>
           </div>
 
           <div class="benutzerDaten">
@@ -49,18 +50,19 @@
           <h2>Hardware / Software</h2>
 
           <div>
-            <label for="winVersion">Windows Version:
-              <input type="text" id="winVersion" name="winVersion" value="10" size="4">
-              32/64 Bit &nbsp; &nbsp;&nbsp;&nbsp;
+            <label for="winVersion">Betriebssystem:
+              <span id="os"></span>
             </label>
-            <label for="updateVersion">Update Version</label>
-            <input type="text" id="updateVersion" name="updateVersion" value="21H1" size="4">
           </div>
 
-          <label for="cpu">CPU:
-            <input type="text" id="cpu" name="cpu" value="" size="30">
-          </label>
           <br/>
+
+          <label for="cpu">CPU:
+            <span id="cpu"></span>
+          </label>
+
+          <br/>
+
           <label for="ram">RAM:</label>
           <input type="text" id="ram" name="ram" value="15022262">
           <br/>
