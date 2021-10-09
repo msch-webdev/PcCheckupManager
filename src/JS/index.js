@@ -3,6 +3,8 @@ const fs = require('fs');
 const pfad = require('path');
 const os = require('os');
 const si = require('systeminformation');
+const hddSpace = require('hdd-space');
+
 
 //Hohlt das Aktuelle Datum
 const datum = () => {
@@ -53,8 +55,8 @@ si.osInfo().then(data => {
   // serial => "00330-51787-78469-AAOEM"
   let serialNr = data.serial;
 
-  betriebsSystem.innerText = `\n ${platt} => ${distr} - ${archi} Bit \n Update Version: ${buildVersion} ( ${update} ) \n Serien Nr: ${serialNr}`;
-  console.log('Betriebssystem => ', betriebsSystem);
+  betriebsSystem.innerText = `\n ${platt} => ${distr} / ${archi} Bit \n Update Version: ${buildVersion} ( ${update} ) \n Serien Nr: ${serialNr}`;
+  //console.log('Betriebssystem => ', betriebsSystem);
 });
 
 //Hohlt Daten der CPU
@@ -65,10 +67,10 @@ si.cpu().then(data => {
   let speed = data.speed;
   let cores = data.cores;
   cpu.innerText = `${manufacturer} ${brand} ( ${cores}x ${speed}GHz )`;
-  console.log('CPU => ', cpu);
+  //console.log('CPU => ', cpu);
 })
 
-//todo: Hohlt die Ram Informationen
+//Hohlt die Ram Informationen
 si.mem().then(data => {
   const memoryGb = document.getElementById('ram');
   let totalMemGb = Math.ceil((data.total / (1024 * 1024 * 1024)).toFixed(2));
@@ -79,12 +81,44 @@ si.memLayout().then(data => {
   const memoryType = document.getElementById('ramtype');
   let type = data[0].type;
   memoryType.innerText = ` ${type}`;
-  console.log('Memory =>', memoryType);
+  //console.log('Memory =>', memoryType);
+});
+
+//Prüft welche Grafikkarte verbaut ist
+si.graphics().then(data => {
+  const grafik = document.getElementById('grafik');
+  //console.log(data.controllers);
+
+  for (const karte of data.controllers) {
+    let model = karte.model;
+    let vram = karte.vram;
+    grafik.innerHTML += `<div>Model: ${model} / Speicher: ${vram}</div>`;
+  }
+  //console.log(grafik)
+});
+
+//todo: Prüft ob HD oder SSD verbaut sind und wie viele
+si.diskLayout().then(data => {
+  const hd = document.getElementById('hd');
+  const ssd = document.getElementById('ssd');
+  let interfaceType = data;
+  console.log(interfaceType);
+  //console.log(data[0].name, data[0].type)
+  //console.log(data[1].name, data[1].type)
+});
+
+si.blockDevices().then(data => {
+  console.log(data);
 });
 
 
-//todo: Prüft ob HD oder SSD verbaut sind und wie viele
+hddSpace({ format: 'auto' }, function (info) {
+    console.log(info);
+    console.log(info.parts[0]);
+    console.log(info.parts[1]);
+});
 
 
-//todo: Prüft welche Grafikkarte verbaut ist
+
+
 // todo: Prüft den Laufwerkspeicher verbrauch für jede platte
