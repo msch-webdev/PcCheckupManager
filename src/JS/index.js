@@ -97,28 +97,41 @@ si.graphics().then(data => {
   //console.log(grafik)
 });
 
-//todo: Prüft ob HD oder SSD verbaut sind und wie viele
+//Prüft Welche Festplatten verbaut wurden & den Speicherverbrauch
 si.diskLayout().then(data => {
-  const hd = document.getElementById('hd');
-  const ssd = document.getElementById('ssd');
-  let interfaceType = data;
-  console.log(interfaceType);
-  //console.log(data[0].name, data[0].type)
-  //console.log(data[1].name, data[1].type)
-});
-
-si.blockDevices().then(data => {
   console.log(data);
+  const laufwerkeName = document.getElementById('laufwerkeName');
+  for (let i = 0; i < data.length; i++) {
+    if(data[i].interfaceType !== 'USB') {
+      let name = data[i].name;
+      let type = "";
+      let interface = data[i].interfaceType;
+      if(data[i].type !== 'SSD') {
+        type = "HDD";
+      }
+      else {
+        type = "SSD";
+      }
+      laufwerkeName.innerHTML += `<div class="hardDiscName">Name: ${name} / Typ: ${type} / Interface: ${interface}</div>`;
+    }
+  }
 });
-
 
 hddSpace({ format: 'auto' }, function (info) {
-    console.log(info);
-    console.log(info.parts[0]);
-    console.log(info.parts[1]);
+  const laufwerke = document.getElementById('laufwerke');
+  let letter = '';
+  let free = '';
+  let size = '';
+  
+  for (let i = 0; i < info.parts.length; i++) {
+    let usb = parseFloat(info.parts[i].size);
+    if(usb > 5) {
+      letter = info.parts[i].letter;
+      free = info.parts[i].free;
+      size = info.parts[i].size;
+      laufwerke.innerHTML += `<div class="hardDiscInfo">${i + 1}. ${letter} ${free} frei von ${size}</div>`;
+    }
+    
+  }
+    
 });
-
-
-
-
-// todo: Prüft den Laufwerkspeicher verbrauch für jede platte
