@@ -69,7 +69,22 @@ si.cpu().then(data => {
 })
 
 //todo: Hohlt die Ram Informationen
-//todo: Prüft ob HD oder SSD verbaut sind und wie viele
-//todo: Prüft welche Grafikkarte verbaut ist
+si.mem().then(data => {
+  const memoryGb = document.getElementById('ram');
+  let totalMemGb = Math.ceil((data.total / (1024 * 1024 * 1024)).toFixed(2));
+  memoryGb.innerText = `${totalMemGb}GB`;
+});
 
+si.memLayout().then(data => {
+  const memoryType = document.getElementById('ramtype');
+  let type = data[0].type;
+  memoryType.innerText = ` ${type}`;
+  console.log('Memory =>', memoryType);
+});
+
+
+//todo: Prüft ob HD oder SSD verbaut sind und wie viele
+
+
+//todo: Prüft welche Grafikkarte verbaut ist
 // todo: Prüft den Laufwerkspeicher verbrauch für jede platte
