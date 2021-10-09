@@ -13,6 +13,7 @@
     "electron": "^15.1.1"
   },
   "dependencies": {
+    "hdd-space": "^1.2.0",
     "jspdf": "^2.4.0",
     "mysql": "^2.18.1",
     "systeminformation": "^5.9.4"
