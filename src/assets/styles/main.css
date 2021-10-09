@@ -96,6 +96,14 @@ p {
   display: inline-block;
 }
 
+.hardDiscInfo {
+  margin-left: 15px;
+}
+
+.hardDiscName {
+  margin-left: 15px;
+}
+
 .scans {
   border-bottom: 1px solid #000;
 }
