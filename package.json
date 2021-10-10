@@ -10,7 +10,8 @@
   "author": "Mike Schneider",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^15.1.1"
+    "electron": "^15.1.1",
+    "electron-packager": "^15.4.0"
   },
   "dependencies": {
     "hdd-space": "^1.2.0",
