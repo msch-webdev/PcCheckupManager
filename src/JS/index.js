@@ -12,7 +12,6 @@ const datum = () => {
   let tag = date.getDate();
   let jahr = date.getFullYear();
   heute.innerText = `${tag}.${monat}.${jahr}`;
-  return heute;
 };
 datum();
 
