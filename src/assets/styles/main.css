@@ -104,6 +104,21 @@ p {
   margin-left: 15px;
 }
 
+#hardwareBtn {
+  cursor: pointer;
+  background-color: gray;
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  margin: 10px 20px;
+}
+
+#hardwareBtn > div {
+  margin-top: 7px;
+  text-align: center;
+  align-items: center;
+}
+
 .scans {
   border-bottom: 1px solid #000;
 }
