@@ -6,6 +6,12 @@ const pfad = require('path');
 //Eventlistener zum Speichern der Daten in JSON
 const kundenSave = document.getElementById('kunde-save');
 kundenSave.addEventListener('click', () => {
+
+  // Hohlt Aktuelles Datum
+  const heute = document.getElementById('datum');
+  if(heute.innerText !== '') {
+    console.log('Datum: ',heute.innerText);
+  }
   //Hohlt die Auftragsnr.
   const auftragsnr = document.getElementById('auftrag');
   if(auftragsnr.value !== '') {
