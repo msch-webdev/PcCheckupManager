@@ -89,7 +89,7 @@ hardwareBtn.addEventListener('click', () => {
 
   //Prüft Welche Festplatten verbaut wurden & den Speicherverbrauch
   si.diskLayout().then(data => {
-    console.log(data);
+    //console.log(data);
     const laufwerkeName = document.getElementById('laufwerkeName');
     for (let i = 0; i < data.length; i++) {
       if(data[i].interfaceType !== 'USB') {
