@@ -21,7 +21,7 @@
           <h2>Kunde Info:</h2>
           <div class="auftragErstellung">
             <label for="auftrag">Auftragsnr.:</label>
-            <input type="text" id="auftrag" name="auftrag" value="123456">&nbsp; &nbsp;&nbsp;&nbsp;
+            <input type="text" id="auftrag" name="auftrag" value="">&nbsp; &nbsp;&nbsp;&nbsp;
 
             <label for="datum">Check Datum:&nbsp;
               <span id="datum"></span>
@@ -195,7 +195,10 @@
             </p>
           </div>
 
-          <div type="" id="kunde-save" class="kunde-save">Daten Speichern</div>
+          <div id="kunde-save">
+            <div class="kunde-save">Daten Speichern</div>
+          </div>
+          
           <div id="pdfView" class="pdfView">PDF Vorschau</div>
           <div id="pdfCreate" class="pdfCreate">PDF erstellen</div>
           
@@ -210,6 +213,8 @@
   
   
   <script type="module" src="../JS/index.js"></script>
+  <script type="module" src="../JS/hardware.js"></script>
+  <script type="module" src="../JS/kunde.js"></script>
   <script src="../JS/Database.js"></script>
 </body>
 </html>
