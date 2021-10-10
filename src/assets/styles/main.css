@@ -52,28 +52,18 @@ p {
 .App-header {
   position: fixed;
   background: linear-gradient(
-  0deg, rgba(212,231,248,1) 30%, rgba(74,168,233,1) 100%);
+  0deg, rgba(212,231,248,1) 5%, rgb(44, 143, 214) 100%);
   width: 100%;
-  height: 8em;
-  border-bottom: 1px solid #000;
+  height: 10em;
 }
-
-.App-header > h1 {
-  position: absolute;
-  color: #2d2d2d;
-  font-size: 4em;
-  right: 30%;
-  top: 0.4em;
-  margin: 0;
-}
-
 
 .App-logo {
   position: absolute;
-  width: 20em;
+  width: 50%;
   height: auto;
-  left: 1em;
-  top: 2em;
+  margin-left: 25%;
+  margin-right: 25%;
+  top: 1em;
 }
 
 /* 
@@ -83,16 +73,16 @@ p {
 */
 
 .App-main {
-  padding-top: 6em;
+  padding-top: 8em;
 }
 
 .kunde-info {
-  border-bottom: 1px solid #000;
+  border: 1px solid #fff;
   padding: 10px;
 }
 
 .hardware {
-  border-bottom: 1px solid #000;
+  border: 1px solid #fff;
 }
 
 #cpu {
@@ -114,14 +104,14 @@ p {
 #hardware-wrapper {
   width: 50%;
   height: auto;
-  border-right: 1px solid #000;
+  border: 1px solid #fff;
   padding: 10px;
 }
 
 #scans-wrapper {
   width: 50%;
   height: auto;
-  border-left: 1px solid #000;
+  border: 1px solid #fff;
   padding: 10px;
 }
 
@@ -148,7 +138,7 @@ p {
 }
 
 .scans {
-  border-bottom: 1px solid #000;
+  border: 1px solid #fff;
 }
 
 .scans-checkbox > label {
@@ -160,7 +150,7 @@ p {
 }
 
 .endkontrolle {
-  border-bottom: 1px solid #000;
+  border: 1px solid #fff;
 }
 
 .btn-container {
@@ -217,5 +207,6 @@ p {
 */
 
 .App-footer {
-
+  height: 80px;
+  border: 1px solid #fff;
 }
