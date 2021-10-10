@@ -22,7 +22,7 @@
       <form action="#" class="App-form form-hardware">
 
         <div class="kunde-info">
-          <h2>Kunde Info:</h2>
+          <h2>- Kunde Info -</h2>
           <div class="auftragErstellung">
             <label for="auftrag">Auftragsnr.:</label>
             <input type="text" id="auftrag" name="auftrag" value="">&nbsp; &nbsp;&nbsp;&nbsp;
@@ -52,7 +52,7 @@
         
         <div id="check-container">
           <div id="hardware-wrapper" class="hardware">
-            <h2>Hardware / Software</h2>
+            <h2>- Hardware / Software -</h2>
 
             <div>
               <label for="os">Betriebssystem:
@@ -92,7 +92,7 @@
           </div>
 
           <div id="scans-wrapper" class="scans">
-            <h2>Auszuführende Arbeiten</h2>
+            <h2>- Auszuführende Arbeiten -</h2>
             <p>Windows Updates: &nbsp;<input type="text" id="winUpdates" name="winUpdates" value="11" size="4"> Aktualisiert</p>
             <p>Schadsoftware Check: &nbsp;<input type="text" id="schadsoftware" name="schadsoftware" value="12" size="4"> Funde / Funde entfernt</p>
             <p>Viren Check: &nbsp;<input type="text" id="virenCheck" name="virenCheck" value="42" size="4"> Funde / Funde entfernt</p>
@@ -121,84 +121,92 @@
         </div>
 
         <div class="endkontrolle">
-          <h2>Endkontrolle</h2>
-          <div>
-            <p>Alle Lüfter drehen Geräuschlos: &nbsp;
-              Ja<input type="radio" name="lüftergeräusch" id="lüftergeräuschTrue">&nbsp;
-              Nein<input type="radio" name="lüftergeräusch" id="lüftergeräuschFalse">
-            </p>
-          </div>
-          <div>
-            <p>Power/HD in Betrieb LED´s funktionieren: &nbsp;
-              Ja<input type="radio" name="powerLed" id="powerLedTrue">&nbsp;
-              Nein<input type="radio" name="powerLed" id="powerLedFalse">
-            </p>
-          </div>
-          <div>
-            <p>CPU und Speicher werden korrekt erkannt: &nbsp;
-              Ja<input type="radio" name="cpuRam" id="cpuRamTrue">&nbsp;
-              Nein<input type="radio" name="cpuRam" id="cpuRamFalse">
-            </p>
-          </div>
-          <div>
-            <p>HD/SSD wird korrekt erkannt: &nbsp;
-              Ja<input type="radio" name="hdSsd" id="hdSsdTrue">&nbsp;
-              Nein<input type="radio" name="hdSsd" id="hdSsdFalse">
-            </p>
-          </div>
-          <div>
-            <p>Windows ist aktiviert: &nbsp;
-              Ja<input type="radio" name="winAktiv" id="winAktivTrue">&nbsp;
-              Nein<input type="radio" name="winAktiv" id="winAktivFalse">
-            </p>
-          </div>
-          <div>
-            <p>Gerätemanager zeigt keine Ausrufezeichen: &nbsp;
-              Ja<input type="radio" name="gerät" id="gerätTrue">&nbsp;
-              Nein<input type="radio" name="gerät" id="gerätFalse">
-            </p>
-          </div>
-          <div>
-            <p>Front Sound funktioniert: &nbsp;
-              Ja<input type="radio" name="frontSound" id="frontSoundTrue">&nbsp;
-              Nein<input type="radio" name="frontSound" id="frontSoundFalse">
-            </p>
-          </div>
-          <div>
-            <p>Rear Sound funktioniert: &nbsp;
-              Ja<input type="radio" name="rearSound" id="rearSoundTrue">&nbsp;
-              Nein<input type="radio" name="rearSound" id="rearSoundFalse">
-            </p>
-          </div>
-          <div>
-            <p>Front USB funktioniert: &nbsp;
-              Ja<input type="radio" name="frontUSB" id="frontUSBTrue">&nbsp;
-              Nein<input type="radio" name="frontUSB" id="frontUSBFalse">
-            </p>
-          </div>
-          <div>
-            <p>Rear USB funktioniert: &nbsp;
-              Ja<input type="radio" name="rearUSB" id="rearUSBTrue">&nbsp;
-              Nein<input type="radio" name="rearUSB" id="rearUSBFalse">
-            </p>
-          </div>
-          <div>
-            <p>CD/DVD offnet und liest Medien: &nbsp;
-              Ja<input type="radio" name="cdDVD" id="cdDVDTrue">&nbsp;
-              Nein<input type="radio" name="cdDVD" id="cdDVDFalse">
-            </p>
-          </div>
-          <div>
-            <p>LAN Funktioniert: &nbsp;
-              Ja<input type="radio" name="lan" id="lanTrue">&nbsp;
-              Nein<input type="radio" name="lan" id="lanFalse">
-            </p>
-          </div>
-          <div>
-            <p>WLAN Funktioniert: &nbsp;
-              Ja<input type="radio" name="wlan" id="wlanTrue">&nbsp;
-              Nein<input type="radio" name="wlan" id="wlanFalse">
-            </p>
+          <h2>- Endkontrolle -</h2>
+          <div class="endkontrolle_container">
+            <div class="col50">
+              <div>
+                <p>Alle Lüfter drehen Geräuschlos: &nbsp;
+                  Ja<input type="radio" name="lüftergeräusch" id="lüftergeräuschTrue">&nbsp;
+                  Nein<input type="radio" name="lüftergeräusch" id="lüftergeräuschFalse">
+                </p>
+              </div>
+              <div>
+                <p>Power/HD in Betrieb LED´s funktionieren: &nbsp;
+                  Ja<input type="radio" name="powerLed" id="powerLedTrue">&nbsp;
+                  Nein<input type="radio" name="powerLed" id="powerLedFalse">
+                </p>
+              </div>
+              <div>
+                <p>CPU und Speicher werden korrekt erkannt: &nbsp;
+                  Ja<input type="radio" name="cpuRam" id="cpuRamTrue">&nbsp;
+                  Nein<input type="radio" name="cpuRam" id="cpuRamFalse">
+                </p>
+              </div>
+              <div>
+                <p>HD/SSD wird korrekt erkannt: &nbsp;
+                  Ja<input type="radio" name="hdSsd" id="hdSsdTrue">&nbsp;
+                  Nein<input type="radio" name="hdSsd" id="hdSsdFalse">
+                </p>
+              </div>
+              <div>
+                <p>Windows ist aktiviert: &nbsp;
+                  Ja<input type="radio" name="winAktiv" id="winAktivTrue">&nbsp;
+                  Nein<input type="radio" name="winAktiv" id="winAktivFalse">
+                </p>
+              </div>
+              <div>
+                <p>Gerätemanager zeigt keine Ausrufezeichen: &nbsp;
+                  Ja<input type="radio" name="gerät" id="gerätTrue">&nbsp;
+                  Nein<input type="radio" name="gerät" id="gerätFalse">
+                </p>
+              </div>
+              
+            </div>
+            <div class="col50">
+              <div>
+                <p>Front Sound funktioniert: &nbsp;
+                  Ja<input type="radio" name="frontSound" id="frontSoundTrue">&nbsp;
+                  Nein<input type="radio" name="frontSound" id="frontSoundFalse">
+                </p>
+              </div>
+              <div>
+                <p>Rear Sound funktioniert: &nbsp;
+                  Ja<input type="radio" name="rearSound" id="rearSoundTrue">&nbsp;
+                  Nein<input type="radio" name="rearSound" id="rearSoundFalse">
+                </p>
+              </div>
+              <div>
+                <p>Front USB funktioniert: &nbsp;
+                  Ja<input type="radio" name="frontUSB" id="frontUSBTrue">&nbsp;
+                  Nein<input type="radio" name="frontUSB" id="frontUSBFalse">
+                </p>
+              </div>
+              <div>
+                <p>Rear USB funktioniert: &nbsp;
+                  Ja<input type="radio" name="rearUSB" id="rearUSBTrue">&nbsp;
+                  Nein<input type="radio" name="rearUSB" id="rearUSBFalse">
+                </p>
+              </div>
+              <div>
+                <p>CD/DVD offnet und liest Medien: &nbsp;
+                  Ja<input type="radio" name="cdDVD" id="cdDVDTrue">&nbsp;
+                  Nein<input type="radio" name="cdDVD" id="cdDVDFalse">
+                </p>
+              </div>
+              <div>
+                <p>LAN Funktioniert: &nbsp;
+                  Ja<input type="radio" name="lan" id="lanTrue">&nbsp;
+                  Nein<input type="radio" name="lan" id="lanFalse">
+                </p>
+              </div>
+              <div>
+                <p>WLAN Funktioniert: &nbsp;
+                  Ja<input type="radio" name="wlan" id="wlanTrue">&nbsp;
+                  Nein<input type="radio" name="wlan" id="wlanFalse">
+                </p>
+              </div>
+            </div>
+
           </div>
 
           <div class="btn-container">
