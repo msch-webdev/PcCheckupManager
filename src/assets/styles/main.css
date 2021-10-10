@@ -21,7 +21,14 @@ body {
   background-color: #2d2d2d;
 }
 
-#App-container {}
+body::-webkit-scrollbar { 
+  display: none;
+}
+
+#App-container {
+  width: 100%;
+  height: auto;
+}
 
 h2 {
   font-size: 2.5em;
@@ -43,7 +50,9 @@ p {
 */
 
 .App-header {
-  position: relative;
+  position: fixed;
+  background: linear-gradient(
+  0deg, rgba(212,231,248,1) 30%, rgba(74,168,233,1) 100%);
   width: 100%;
   height: 8em;
   border-bottom: 1px solid #000;
@@ -51,7 +60,7 @@ p {
 
 .App-header > h1 {
   position: absolute;
-  color: #fff;
+  color: #2d2d2d;
   font-size: 4em;
   right: 30%;
   top: 0.4em;
@@ -74,12 +83,12 @@ p {
 */
 
 .App-main {
-
+  padding-top: 6em;
 }
 
 .kunde-info {
   border-bottom: 1px solid #000;
-
+  padding: 10px;
 }
 
 .hardware {
@@ -94,6 +103,26 @@ p {
 
 .laufwerke > p {
   display: inline-block;
+}
+
+#check-container {
+  display: flex; 
+  width: 100%;
+  height: auto;
+}
+
+#hardware-wrapper {
+  width: 50%;
+  height: auto;
+  border-right: 1px solid #000;
+  padding: 10px;
+}
+
+#scans-wrapper {
+  width: 50%;
+  height: auto;
+  border-left: 1px solid #000;
+  padding: 10px;
 }
 
 .hardDiscInfo {
