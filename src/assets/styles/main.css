@@ -7,6 +7,8 @@
 /* 
   Colors:
     Background = #2d2d2d
+    linear-gradient = (0deg, rgba(212,231,248,1) -10%, rgb(44, 143, 214) 100%);
+    Gold = rgb(226, 192, 141);
 */
 
 html {
@@ -31,16 +33,25 @@ body::-webkit-scrollbar {
 }
 
 h2 {
-  font-size: 2.5em;
+  font-size: 3em;
+  color: rgb(226, 192, 141);
 }
 
 label {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1.8em;
 }
+
+input {
+  border: none;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+
 
 
 /* 
@@ -125,8 +136,16 @@ p {
   padding: 10px;
 }
 
+.kunde-info > h2 {
+  text-align: center;
+}
+
 .hardware {
   border: 1px solid #fff;
+}
+
+.hardware > h2 {
+  text-align: center;
 }
 
 #cpu {
@@ -149,29 +168,32 @@ p {
   width: 50%;
   height: auto;
   border: 1px solid #fff;
-  padding: 10px;
+  padding: 20px;
 }
 
 #scans-wrapper {
   width: 50%;
   height: auto;
   border: 1px solid #fff;
-  padding: 10px;
+  padding: 20px;
 }
 
 .hardDiscInfo {
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .hardDiscName {
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 #hardwareBtn {
   cursor: pointer;
-  background-color: gray;
+  background-color: rgb(226, 192, 141);
+  color: #2d2d2d;
+  font-size: 1.5em;
+  border-radius: 5px;
   display: inline-block;
-  width: 100px;
+  width: 150px;
   height: 30px;
   margin: 10px 20px;
 }
@@ -183,6 +205,10 @@ p {
 
 .scans {
   border: 1px solid #fff;
+}
+
+.scans > h2 {
+  text-align: center;
 }
 
 .scans-checkbox > label {
@@ -197,15 +223,37 @@ p {
   border: 1px solid #fff;
 }
 
+.endkontrolle > h2 {
+  text-align: center;
+}
+
+.endkontrolle_container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0; 
+}
+
+.col50 {
+  width: 50%;
+}
+
+.col50 > div {
+  text-align: center;
+}
+
 .btn-container {
   display: flex;
+  justify-content: center;
 }
 
 #kunde-save {
   cursor: pointer;
-  background-color: gray;
+  background-color: rgb(226, 192, 141);
+  color: #2d2d2d;
+  font-size: 1.5em;
+  border-radius: 5px;
   display: inline-block;
-  width: 100px;
+  width: 150px;
   height: 30px;
   margin: 10px 20px;
 }
@@ -217,9 +265,12 @@ p {
 
 #pdfCreate {
   cursor: pointer;
-  background-color: gray;
+  background-color: rgb(226, 192, 141);
+  color: #2d2d2d;
+  font-size: 1.5em;
+  border-radius: 5px;
   display: inline-block;
-  width: 100px;
+  width: 150px;
   height: 30px;
   margin: 10px 20px;
 }
@@ -231,9 +282,12 @@ p {
 
 #pdfView {
   cursor: pointer;
-  background-color: gray;
+  background-color: rgb(226, 192, 141);
+  color: #2d2d2d;
+  font-size: 1.5em;
+  border-radius: 5px;
   display: inline-block;
-  width: 100px;
+  width: 150px;
   height: 30px;
   margin: 10px 20px;
 }
