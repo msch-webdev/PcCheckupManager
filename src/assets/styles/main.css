@@ -134,6 +134,10 @@ p {
   border-bottom: 1px solid #000;
 }
 
+.btn-container {
+  display: flex;
+}
+
 #kunde-save {
   cursor: pointer;
   background-color: gray;
@@ -144,6 +148,34 @@ p {
 }
 
 #kunde-save > div {
+  margin-top: 7px;
+  text-align: center;
+}
+
+#pdfCreate {
+  cursor: pointer;
+  background-color: gray;
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  margin: 10px 20px;
+}
+
+#pdfCreate > div {
+  margin-top: 7px;
+  text-align: center;
+}
+
+#pdfView {
+  cursor: pointer;
+  background-color: gray;
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  margin: 10px 20px;
+}
+
+#pdfView > div {
   margin-top: 7px;
   text-align: center;
 }
