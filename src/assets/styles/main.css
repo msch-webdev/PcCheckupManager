@@ -52,18 +52,62 @@ p {
 .App-header {
   position: fixed;
   background: linear-gradient(
-  0deg, rgba(212,231,248,1) 5%, rgb(44, 143, 214) 100%);
+  0deg, rgba(212,231,248,1) -10%, rgb(44, 143, 214) 100%);
   width: 100%;
-  height: 10em;
+  height: 12em;
 }
 
+
 .App-logo {
+  background-image: url('../img/ordanaLogo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 70%;
+  margin-top: 2em;
+}
+
+#closeWindow {
+  cursor: pointer;
   position: absolute;
-  width: 50%;
-  height: auto;
-  margin-left: 25%;
-  margin-right: 25%;
-  top: 1em;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  font-size: 2em;
+  text-align: center;
+  line-height: 20px;
+}
+
+#fullWindow {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  font-size: 2em;
+  text-align: center;
+  line-height: 17px;
+}
+
+#minimizeWindow {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 70px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  font-size: 2em;
+  text-align: center;
+  line-height: 10px;
 }
 
 /* 
@@ -73,7 +117,7 @@ p {
 */
 
 .App-main {
-  padding-top: 8em;
+  padding-top: 10em;
 }
 
 .kunde-info {
