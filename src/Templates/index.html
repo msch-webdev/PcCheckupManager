@@ -17,6 +17,7 @@
     <!-- #############################  Main -Bereich  ######################################## -->
     <main class="App-main">
       <form action="#" class="App-form form-hardware">
+
         <div class="kunde-info">
           <h2>Kunde Info:</h2>
           <div class="auftragErstellung">
@@ -30,19 +31,19 @@
 
           <div class="benutzerDaten">
             <label for="vorname">Vorname:</label>
-            <input type="text" id="vorname" name="vorname" value="Hanz">
+            <input type="text" id="vorname" name="vorname" value="">
 
             <label for="nachname">Nachname:</label>
-            <input type="text" id="nachname" name="nachname" value="Werner-Dieter-Müller">
+            <input type="text" id="nachname" name="nachname" value="">
           </div>
           
 
           <div class="benutzerPW">
             <label for="benutzerName">Anmelde Name:</label>
-            <input type="text" id="benutzerName" name="benutzerName" value="Hansi">
+            <input type="text" id="benutzerName" name="benutzerName" value="">
 
             <label for="benutzerPW">Anmelde Passwort:</label>
-            <input type="text" id="benutzerPW" name="benutzerPW" value="123abc">
+            <input type="password" id="benutzerPW" name="benutzerPW" value="">
           </div>
         </div>
       
@@ -50,7 +51,7 @@
           <h2>Hardware / Software</h2>
 
           <div>
-            <label for="winVersion">Betriebssystem:
+            <label for="os">Betriebssystem:
               <span id="os"></span>
             </label>
           </div>
@@ -195,13 +196,20 @@
             </p>
           </div>
 
-          <div id="kunde-save">
-            <div class="kunde-save">Daten Speichern</div>
+          <div class="btn-container">
+            <div id="kunde-save">
+              <div>Daten Speichern</div>
+            </div>
+
+            <div id="pdfCreate">
+              <div>PDF erstellen</div>
+            </div>
+
+            <div id="pdfView">
+              <div>PDF Vorschau</div>
+            </div>
           </div>
-          
-          <div id="pdfView" class="pdfView">PDF Vorschau</div>
-          <div id="pdfCreate" class="pdfCreate">PDF erstellen</div>
-          
+
         </div>
       </form>
     </main>
