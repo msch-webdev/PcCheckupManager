@@ -1,6 +1,7 @@
 const {app, BrowserWindow, ipcRenderer} = require('electron');
 const fs = require('fs');
 const pfad = require('path');
+const remote = require('electron').remote;
 
 
 
@@ -15,6 +16,26 @@ const datum = () => {
 };
 datum();
 
+
+/* document.getElementById("minimizeWindow").addEventListener("click", function (e) {
+  var window = remote.getCurrentWindow();
+  window.minimize(); 
+});
+
+document.getElementById("fullWindow").addEventListener("click", function (e) {
+  var window = remote.getCurrentWindow();
+  if (!window.isMaximized()) {
+      window.maximize();          
+  } else {
+      window.unmaximize();
+  }
+});
+
+document.getElementById("closeWindow").addEventListener("click", function (e) {
+  var window = remote.getCurrentWindow();
+  window.close();
+}); 
+ */
 
 
 

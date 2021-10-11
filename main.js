@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain, Menu} = require('electron')
+const remote = require('electron').remote;
 const path = require('path')
 
 function createWindow () {
@@ -14,6 +15,8 @@ function createWindow () {
 
   mainWindow.loadFile('src/Templates/index.html')
   //mainWindow.webContents.openDevTools()
+
+  
 }
 
 app.whenReady().then(() => {
@@ -28,4 +31,5 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
+
 
