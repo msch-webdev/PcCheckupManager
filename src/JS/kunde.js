@@ -3,30 +3,47 @@ const fs = require('fs');
 const pfad = require('path');
 
 
+
 //Eventlistener zum Speichern der Daten in JSON
 const kundenSave = document.getElementById('kunde-save');
 kundenSave.addEventListener('click', () => {
   // Cleart die Konsole
   console.clear();
+
+  // Leert das err Array
+  const err = [];
+
   // Hohlt Aktuelles Datum
   const heute = document.getElementById('datum');
   if(heute.innerText !== '') {
     console.log('Datum: ',heute.innerText);
   }
+  
   //Hohlt die Auftragsnr.
   const auftragsnr = document.getElementById('auftrag');
   if(auftragsnr.value !== '') {
     console.log('Auftragsnr.: ',auftragsnr.value);
   }
+  else {
+    err.push(auftragsnr);
+  }
+
   //Hohlt den Vornamen
   const vorname = document.getElementById('vorname');
   if(vorname.value !== '') {
     console.log('Vorname: ', vorname.value);
   }
+  else {
+    err.push(vorname);
+  }
+
   //Hohlt den Nachnamen
   const nachname = document.getElementById('nachname');
   if(nachname.value !== '') {
     console.log('Nachname: ',nachname.value);
+  }
+  else {
+    err.push(nachname);
   }
 
   //Hohlt den Anmelde Namen
@@ -34,11 +51,17 @@ kundenSave.addEventListener('click', () => {
   if(benutzerName.value !== '') {
     console.log('Benutzername: ',benutzerName.value);
   }
+  else {
+    err.push(benutzerName);
+  }
 
   //Hohlt das Anmelde Passwort
   const benutzerPW = document.getElementById('benutzerPW');
   if(benutzerPW.value !== '') {
     console.log('BenutzerPW: ',benutzerPW.value);
+  }
+  else {
+    err.push(benutzerPW);
   }
 
   //#########################################################
@@ -48,11 +71,17 @@ kundenSave.addEventListener('click', () => {
   if(os.innerText!== '') {
     console.log('OS: ',os.innerText);
   }
+  else {
+    err.push(os);
+  }
 
   // Hohlt die CPU daten
   const cpu = document.getElementById('cpu');
   if(cpu.innerText!== '') {
     console.log('CPU: ',cpu.innerText);
+  }
+  else {
+    err.push(cpu);
   }
 
   // Hohlt die Ram daten
@@ -61,11 +90,17 @@ kundenSave.addEventListener('click', () => {
   if(memoryGb.innerText!== '') {
     console.log('RAM: ',memoryGb.innerText);
   }
+  else {
+    err.push(memoryGb);
+  }
 
   // Hohlt die Grafikkarten infos 
   const grafik = document.getElementById('grafik');
   if(grafik.innerText!== '') {
     console.log('Grafik: \n',grafik.innerText);
+  }
+  else {
+    err.push(grafik);
   }
 
   // Hohlt die Festplatten infos 
@@ -73,11 +108,17 @@ kundenSave.addEventListener('click', () => {
   if(festplatte.innerText!== '') {
     console.log('Festplatten: \n',festplatte.innerText);
   }
+  else {
+    err.push(festplatte);
+  }
 
   // Hohlt die Laufwerks infos 
   const laufwerke = document.getElementById('laufwerke');
   if(laufwerke.innerText!== '') {
     console.log('Laufwerke: \n',laufwerke.innerText);
+  }
+  else {
+    err.push(laufwerke);
   }
 
   //#########################################################
@@ -87,11 +128,17 @@ kundenSave.addEventListener('click', () => {
   if(winUpdate.value !== '') {
     console.log('Windows Update: ',winUpdate.value, 'Aktualisierungen');
   }
+  else {
+    err.push(winUpdate);
+  }
 
   // Hohlt die schadsoftware Funde
   const schadsoftware = document.getElementById('schadsoftware');
   if(schadsoftware.value !== '') {
     console.log('schadsoftware: ',schadsoftware.value,'Funde');
+  }
+  else {
+    err.push(schadsoftware);
   }
 
   // Hohlt die Viren Funde
@@ -99,11 +146,17 @@ kundenSave.addEventListener('click', () => {
   if(virenCheck.value !== '') {
     console.log('virenCheck: ',virenCheck.value,'Funde');
   }
+  else {
+    err.push(virenCheck);
+  }
 
   // Hohlt die CCleaner Bereinigung 
   const ccleanerB = document.getElementById('ccleanerB');
   if(ccleanerB.value !== '') {
     console.log('ccleanerB: ',ccleanerB.value,'MB');
+  }
+  else {
+    err.push(ccleanerB);
   }
 
   // Hohlt die CCleaner Registry 1
@@ -111,11 +164,17 @@ kundenSave.addEventListener('click', () => {
   if(ccleanerR1.value !== '') {
     console.log('ccleanerR1: ',ccleanerR1.value,'Registry Funde');
   }
+  else {
+    err.push(ccleanerR1);
+  }
 
   // Hohlt die CCleaner Registry 1
   const ccleanerR2 = document.getElementById('ccleanerR2');
   if(ccleanerR2.value !== '') {
     console.log('ccleanerR2: +',ccleanerR2.value);
+  }
+  else {
+    err.push(ccleanerR2);
   }
 
   // Hohlt die CCleaner Registry 1
@@ -123,17 +182,26 @@ kundenSave.addEventListener('click', () => {
   if(ccleanerR3.value !== '') {
     console.log('ccleanerR3: +',ccleanerR3.value);
   }
+  else {
+    err.push(ccleanerR3);
+  }
 
   // Hohlt die Systembereinigung 1
   const systembereinigung1 = document.getElementById('1systembereinigung');
   if(systembereinigung1.value !== '') {
     console.log('1. systembereinigung',systembereinigung1.value);
   }
+  else {
+    err.push(systembereinigung1);
+  }
 
   // Hohlt die Systembereinigung 2
   const systembereinigung2 = document.getElementById('2systembereinigung');
   if(systembereinigung2.value !== '') {
     console.log('2. systembereinigung',systembereinigung2.value);
+  }
+  else {
+    err.push(systembereinigung2);
   }
 
   // Hohlt hochdruck checkbox
@@ -142,6 +210,7 @@ kundenSave.addEventListener('click', () => {
     console.log('Hochdruck ',hochdruck.value);
   }
   else {
+    err.push(hochdruck);
     console.log('Keine Hochdruck Reinigung ',hochdruck.checked);
   }
 
@@ -151,6 +220,7 @@ kundenSave.addEventListener('click', () => {
     console.log('Gereinigt ',gereinigt.value);
   }
   else {
+    err.push(gereinigt);
     console.log('Nicht Gereinigt ',gereinigt.checked);
   }
 
@@ -158,6 +228,9 @@ kundenSave.addEventListener('click', () => {
   const auffäligkeiten = document.getElementById('auffäligkeiten');
   if(auffäligkeiten.value !== '') {
     console.log('Auffäligkeiten ',auffäligkeiten.value);
+  }
+  else {
+    err.push(auffäligkeiten);
   }
 
   
@@ -173,6 +246,7 @@ kundenSave.addEventListener('click', () => {
     console.log('Lüftergeräusche ',lüftergeräusch[1].value);
   }
   else {
+    err.push(lüftergeräusch[0].parentElement);
     console.log('Lüftergeräusche auswählen');
   }
 
@@ -186,6 +260,7 @@ kundenSave.addEventListener('click', () => {
     console.log('Power Led ',powerLed[1].value);
   }
   else {
+    err.push(powerLed[0].parentElement);
     console.log('Power Led auswählen');
   }
 
@@ -199,6 +274,7 @@ kundenSave.addEventListener('click', () => {
     console.log('CPU/Ram ',cpuRam[1].value);
   }
   else {
+    err.push(cpuRam[0].parentElement);
     console.log('CPU/Ram auswählen');
   }
 
@@ -212,6 +288,7 @@ kundenSave.addEventListener('click', () => {
     console.log('HD/SSD ',hdSsd[1].value);
   }
   else {
+    err.push(hdSsd[0].parentElement);
     console.log('HD/SSD auswählen');
   }
 
@@ -225,6 +302,7 @@ kundenSave.addEventListener('click', () => {
     console.log('Windows Aktiv ',winAktiv[1].value);
   }
   else {
+    err.push(winAktiv[0].parentElement);
     console.log('Windows Aktiv auswählen');
   }
 
@@ -238,6 +316,7 @@ kundenSave.addEventListener('click', () => {
     console.log('Gerätemanager ',gerät[1].value);
   }
   else {
+    err.push(gerät[0].parentElement);
     console.log('Gerätemanager auswählen');
   }
 
@@ -251,6 +330,7 @@ kundenSave.addEventListener('click', () => {
     console.log('FrontSound ',frontSound[1].value);
   }
   else {
+    err.push(frontSound[0].parentElement);
     console.log('FrontSound auswählen');
   }
 
@@ -264,6 +344,7 @@ kundenSave.addEventListener('click', () => {
     console.log('RearSound ',rearSound[1].value);
   }
   else {
+    err.push(rearSound[0].parentElement);
     console.log('RearSound auswählen');
   }
 
@@ -277,6 +358,7 @@ kundenSave.addEventListener('click', () => {
     console.log('Front-USB ',frontUSB[1].value);
   }
   else {
+    err.push(frontUSB[0].parentElement);
     console.log('Front-USB auswählen');
   }
 
@@ -290,6 +372,7 @@ kundenSave.addEventListener('click', () => {
     console.log('Rear-USB ',rearUSB[1].value);
   }
   else {
+    err.push(rearUSB[0].parentElement);
     console.log('Rear-USB auswählen');
   }
 
@@ -303,6 +386,7 @@ kundenSave.addEventListener('click', () => {
     console.log('CD/DVD ',cdDVD[1].value);
   }
   else {
+    err.push(cdDVD[0].parentElement);
     console.log('CD/DVD auswählen');
   }
 
@@ -316,6 +400,7 @@ kundenSave.addEventListener('click', () => {
     console.log('LAN ',lan[1].value);
   }
   else {
+    err.push(lan[0].parentElement);
     console.log('LAN auswählen');
   }
 
@@ -329,15 +414,18 @@ kundenSave.addEventListener('click', () => {
     console.log('WLAN ',wlan[1].value);
   }
   else {
+    err.push(wlan[0].parentElement);
     console.log('WLAN auswählen');
   }
 
 
-
-
-
-
-
-
+  if(err.length < 1) {
+    console.log('alles ok')
+  }
+  else {
+    console.log(err);
+    alert('Oha da wurden Felder nicht ausgefüllt');
+    
+  }
 
 });
