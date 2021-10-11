@@ -128,16 +128,41 @@ input {
 */
 
 .App-main {
-  padding-top: 10em;
+  padding-top: 12em;
 }
 
 .kunde-info {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   border: 1px solid #fff;
   padding: 10px;
 }
 
 .kunde-info > h2 {
+  width: 100%;
   text-align: center;
+  flex: none;
+}
+
+.auftragErstellungLeft {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.auftragErstellungLeft label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.auftragErstellungRight 
+{margin-left: 20px;
+  margin-right: auto;
+}
+
+.auftragErstellungRight label {
+  display: block;
+  margin-bottom: 20px;
 }
 
 .hardware {
