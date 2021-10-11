@@ -165,29 +165,10 @@ input {
   margin-bottom: 20px;
 }
 
-.hardware {
-  border: 1px solid #fff;
-}
-
-.hardware > h2 {
-  text-align: center;
-}
-
-#cpu {
-  border: none;
-  background-color: #2d2d2d;
-  color: #fff;
-}
-
-.laufwerke > p {
-  display: inline-block;
-}
-
-#check-container {
-  display: flex; 
-  width: 100%;
-  height: auto;
-}
+/* 
+#########################################################
+                        Hardware
+*/
 
 #hardware-wrapper {
   width: 50%;
@@ -196,19 +177,43 @@ input {
   padding: 20px;
 }
 
+#hardware-wrapper > h2 {
+  text-align: center;
+}
+
+#hardware-wrapper > label > span > div {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+#hardware-wrapper > label > span > div > div {
+  margin-bottom: 5px;
+}
+
+.tab {
+  margin-left: 20px;
+}
+
+.laufwerke > p {
+  display: inline-block;
+}
+
+/* 
+#########################################################
+                  Auszuführende Arbeiten
+*/
+
+#check-container {
+  display: flex; 
+  width: 100%;
+  height: auto;
+}
+
 #scans-wrapper {
   width: 50%;
   height: auto;
   border: 1px solid #fff;
   padding: 20px;
-}
-
-.hardDiscInfo {
-  margin-left: 20px;
-}
-
-.hardDiscName {
-  margin-left: 20px;
 }
 
 #hardwareBtn {
@@ -224,9 +229,18 @@ input {
 }
 
 #hardwareBtn > div {
-  margin-top: 7px;
+  margin-top: 6px;
   text-align: center;
 }
+
+#hardwareBtn:hover {
+  box-sizing: border-box;
+  background-color: #2d2d2d ;
+  color: rgb(226, 192, 141);
+  border: 1px solid rgb(226, 192, 141);
+}
+
+
 
 .scans {
   border: 1px solid #fff;
@@ -254,16 +268,17 @@ input {
 
 .endkontrolle_container {
   display: flex;
-  justify-content: space-between;
-  margin: 20px 0; 
+  margin: 20px 10%; 
 }
 
 .col50 {
-  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
 }
 
-.col50 > div {
-  text-align: center;
+.col50 > label {
+  float: right;
 }
 
 .btn-container {
@@ -284,8 +299,39 @@ input {
 }
 
 #kunde-save > div {
-  margin-top: 7px;
+  margin-top: 6px;
   text-align: center;
+}
+
+#kunde-save:hover {
+  box-sizing: border-box;
+  background-color: #2d2d2d ;
+  color: rgb(226, 192, 141);
+  border: 1px solid rgb(226, 192, 141);
+}
+
+#kunde-load {
+  cursor: pointer;
+  background-color: rgb(226, 192, 141);
+  color: #2d2d2d;
+  font-size: 1.5em;
+  border-radius: 5px;
+  display: inline-block;
+  width: 150px;
+  height: 30px;
+  margin: 10px 20px;
+}
+
+#kunde-load > div {
+  margin-top: 6px;
+  text-align: center;
+}
+
+#kunde-load:hover {
+  box-sizing: border-box;
+  background-color: #2d2d2d ;
+  color: rgb(226, 192, 141);
+  border: 1px solid rgb(226, 192, 141);
 }
 
 #pdfCreate {
@@ -301,8 +347,15 @@ input {
 }
 
 #pdfCreate > div {
-  margin-top: 7px;
+  margin-top: 6px;
   text-align: center;
+}
+
+#pdfCreate:hover {
+  box-sizing: border-box;
+  background-color: #2d2d2d ;
+  color: rgb(226, 192, 141);
+  border: 1px solid rgb(226, 192, 141);
 }
 
 #pdfView {
@@ -318,9 +371,17 @@ input {
 }
 
 #pdfView > div {
-  margin-top: 7px;
+  margin-top: 6px;
   text-align: center;
 }
+
+#pdfView:hover {
+  box-sizing: border-box;
+  background-color: #2d2d2d ;
+  color: rgb(226, 192, 141);
+  border: 1px solid rgb(226, 192, 141);
+}
+
 
 
 /* 
