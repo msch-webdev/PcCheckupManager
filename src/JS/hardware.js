@@ -1,7 +1,6 @@
 const {app, BrowserWindow, ipcRenderer} = require('electron');
 const fs = require('fs');
 const pfad = require('path');
-const os = require('os');
 const si = require('systeminformation');
 const hddSpace = require('hdd-space');
 
@@ -10,6 +9,7 @@ const hardwareBtn = document.getElementById('hardwareBtn');
 hardwareBtn.addEventListener('click', () => {
   //Hohlt die Windows Version und die Update Version
   si.osInfo().then(data => {
+    console.log('OS => ', data);
     const betriebsSystem = document.getElementById('os');
     const builderWin = ['21H1', '20H2', '2004', '1909'];
     let update = '';
@@ -45,51 +45,61 @@ hardwareBtn.addEventListener('click', () => {
     // serial => "00330-51787-78469-AAOEM"
     let serialNr = data.serial;
 
-    betriebsSystem.innerText = `\n ${platt} => ${distr} / ${archi} Bit \n Update Version: ${buildVersion} ( ${update} ) \n Serien Nr: ${serialNr}`;
-    //console.log('Betriebssystem => ', betriebsSystem);
+    betriebsSystem.innerHTML = `<div class="os">
+                                  <div>- System: ${platt}</div>
+                                  <div>- OS: ${distr} / ${archi} Bit</div>
+                                  <div>- Update Version: ${buildVersion} ( ${update} )</div>
+                                  <div>- Serien Nr: ${serialNr}</div>
+                                </div>`;
   });
 
   //Hohlt Daten der CPU
   si.cpu().then(data => {
+    console.log('CPU => ', data);
     const cpu = document.getElementById('cpu');
     let manufacturer = data.manufacturer;
     let brand = data.brand;
     let speed = data.speed;
     let cores = data.cores;
-    cpu.innerText = `${manufacturer} ${brand} ( ${cores}x ${speed}GHz )`;
-    //console.log('CPU => ', cpu);
+
+    cpu.innerHTML = `<div class="cpu">
+                      <div>- Hersteller: ${manufacturer}</div>
+                      <div>- Model: ${brand}</div>
+                      <div>- Cores: ${cores}x ${speed}GHz</div
+                     </div>`;
   })
 
   //Hohlt die Ram Informationen
   si.mem().then(data => {
-    const memoryGb = document.getElementById('ram');
+    console.log('Memory 1 => ', data);
     let totalMemGb = Math.ceil((data.total / (1024 * 1024 * 1024)).toFixed(2));
-    memoryGb.innerText = `${totalMemGb}GB`;
-  });
-
-  si.memLayout().then(data => {
-    const memoryType = document.getElementById('ramtype');
-    let type = data[0].type;
-    memoryType.innerText = ` ${type}`;
-    //console.log('Memory =>', memoryType);
+    si.memLayout().then(data => {
+      console.log('Memory 2 => ', data);
+      const memoryType = document.getElementById('ram');
+      let type = data[0].type;
+      memoryType.innerHTML = `<div>- Grösse: ${totalMemGb}GB ${type}</div>`;
+    });                 
   });
 
   //Prüft welche Grafikkarte verbaut ist
   si.graphics().then(data => {
+    console.log('Grafikkarten => ', data);
     const grafik = document.getElementById('grafik');
-    //console.log(data.controllers);
 
     for (const karte of data.controllers) {
       let model = karte.model;
       let vram = karte.vram;
-      grafik.innerHTML += `<div>Model: ${model} / Speicher: ${vram}</div>`;
+
+      grafik.innerHTML += `<div class="grafik">
+                            <div>- Model: ${model}</div>
+                            <div>- Ram: ${vram}</div
+                          </div>`;
     }
-    //console.log(grafik)
   });
 
   //Prüft Welche Festplatten verbaut wurden & den Speicherverbrauch
   si.diskLayout().then(data => {
-    //console.log(data);
+    console.log('Laufwerk => ', data);
     const laufwerkeName = document.getElementById('laufwerkeName');
     for (let i = 0; i < data.length; i++) {
       if(data[i].interfaceType !== 'USB') {
@@ -102,12 +112,18 @@ hardwareBtn.addEventListener('click', () => {
         else {
           type = "SSD";
         }
-        laufwerkeName.innerHTML += `<div class="hardDiscName">Name: ${name} / Typ: ${type} / Interface: ${interfaceInfo}</div>`;
+
+        laufwerkeName.innerHTML += `<div class="cpu">
+                                    <div>- Name: ${name}</div>
+                                    <div class="tab">- Type: ${type}</div>
+                                    <div class="tab">- Interface: ${interfaceInfo}</div
+                                  </div>`;
       }
     }
   });
 
   hddSpace({ format: 'auto' }, function (info) {
+    console.log('Laufwerksspeicher => ', info);
     const laufwerke = document.getElementById('laufwerke');
     let letter = '';
     let free = '';
@@ -119,10 +135,8 @@ hardwareBtn.addEventListener('click', () => {
         letter = info.parts[i].letter;
         free = info.parts[i].free;
         size = info.parts[i].size;
-        laufwerke.innerHTML += `<div class="hardDiscInfo">${i + 1}. ${letter} ${free} frei von ${size}</div>`;
+        laufwerke.innerHTML += `<div>- ${letter} ${free} frei von ${size}</div>`;
       }
-      
-    }
-      
+    };
   });
 },{once: true});
