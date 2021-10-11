@@ -59,35 +59,33 @@
           <div id="hardware-wrapper" class="hardware">
             <h2>- Hardware / Software -</h2>
 
-            <div>
-              <label for="os">Betriebssystem:
-                <span id="os"></span>
-              </label>
-            </div>
-
-            <br/>
-
+            <label for="os">Betriebssystem:
+              <br/>
+              <span id="os"></span>
+            </label>
+            
             <label for="cpu">CPU:
+              <br/>
               <span id="cpu"></span>
             </label>
 
-            <br/>
-
             <label for="ram">RAM:
-              <span id="ram"></span><span id="ramtype"></span>
+              <br/>
+              <span id="ram"></span>
             </label>
 
-            <br/>
             <label for="grafik">Grafik:
+              <br/>
               <span id="grafik"></span>
             </label>
-            <br/>
+
             <label for="laufwerkeName">Laufwerke:
+              <br/>
               <span id="laufwerkeName"></span>
             </label>
 
-            <br/><br/>
-            <label for="laufwerke">Partitionen
+            <label for="laufwerke">Partitionen:
+              <br/>
               <span id="laufwerke"></span>
             </label>
             <br/>
@@ -98,30 +96,34 @@
 
           <div id="scans-wrapper" class="scans">
             <h2>- Auszuführende Arbeiten -</h2>
-            <p>Windows Updates: &nbsp;<input type="text" id="winUpdates" name="winUpdates" value="11" size="4"> Aktualisiert</p>
-            <p>Schadsoftware Check: &nbsp;<input type="text" id="schadsoftware" name="schadsoftware" value="12" size="4"> Funde / Funde entfernt</p>
-            <p>Viren Check: &nbsp;<input type="text" id="virenCheck" name="virenCheck" value="42" size="4"> Funde / Funde entfernt</p>
-            <p>CCleaner Bereinigung Check: &nbsp;<input type="text" id="ccleanerB" name="ccleanerB" value="42" size="4">MB</p>
+            <p>Windows Updates: &nbsp;<input type="text" id="winUpdates" name="winUpdates" value="" size="4"> Aktualisiert</p>
+            <p>Schadsoftware Check: &nbsp;<input type="text" id="schadsoftware" name="schadsoftware" value="" size="4"> Funde / Funde entfernt</p>
+            <p>Viren Check: &nbsp;<input type="text" id="virenCheck" name="virenCheck" value="" size="4"> Funde / Funde entfernt</p>
+            <p>CCleaner Bereinigung Check: &nbsp;<input type="text" id="ccleanerB" name="ccleanerB" value="" size="4">MB</p>
             <p>
               CCleaner Registry Check: &nbsp;
-              <input type="text" id="ccleanerR" name="ccleanerR" value="42" size="4">Registry Funde + 
-              <input type="text" id="ccleanerR2" name="ccleanerR2" value="30" size="2">+
-              <input type="text" id="ccleanerR3" name="ccleanerR3" value="30" size="2">
+              <input type="text" id="ccleanerR1" name="ccleanerR" value="" size="4">Registry Funde + 
+              <input type="text" id="ccleanerR2" name="ccleanerR2" value="" size="2">+
+              <input type="text" id="ccleanerR3" name="ccleanerR3" value="" size="2">
             </p>
-            <p>1. Systembereinigung: &nbsp;<input type="text" id="1systembereinigung" name="1systembereinigung" value="42" size="4"> MB / GB</p>
-            <p>2. Systembereinigung: &nbsp;<input type="text" id="2systembereinigung" name="2systembereinigung" value="10" size="4"> MB / GB</p>
+            <p>1. Systembereinigung: &nbsp;<input type="text" id="1systembereinigung" name="1systembereinigung" value="" size="4"> MB / GB</p>
+            <p>2. Systembereinigung: &nbsp;<input type="text" id="2systembereinigung" name="2systembereinigung" value="" size="4"> MB / GB</p>
             
             <div class="scans-checkbox">
               <div>
                 <label for="hochdruck">Gerät innen mit Hochdruck gereinigt</label>
-                <input type="checkbox" name="hochdruck" id="hochdruck">
+                <input type="checkbox" name="hochdruck" id="hochdruck" value="&#10003;">
               </div>
+              <br/>
               <div>
                 <label for="gereinigt">Gerät außen gereinigt</label>
-                <input type="checkbox" name="gereinigt" id="gereinigt">
+                <input type="checkbox" name="gereinigt" id="gereinigt" value="&#10003;">
               </div>
             </div>
-            <textarea name="auffäligkeiten" id="auffäligkeiten" cols="30" rows="10" placeholder="">Auffäligkeiten (Kurzbericht)</textarea>
+            <br/>
+            <label for="auffäligkeiten">Auffäligkeiten (Kurzbericht)
+              <textarea name="auffäligkeiten" id="auffäligkeiten" cols="30" rows="10" placeholder="Hier Text eingeben"></textarea>
+            </label>
           </div>
         </div>
 
@@ -129,94 +131,93 @@
           <h2>- Endkontrolle -</h2>
           <div class="endkontrolle_container">
             <div class="col50">
-              <div>
-                <p>Alle Lüfter drehen Geräuschlos: &nbsp;
-                  Ja<input type="radio" name="lüftergeräusch" id="lüftergeräuschTrue">&nbsp;
-                  Nein<input type="radio" name="lüftergeräusch" id="lüftergeräuschFalse">
-                </p>
-              </div>
-              <div>
-                <p>Power/HD in Betrieb LED´s funktionieren: &nbsp;
-                  Ja<input type="radio" name="powerLed" id="powerLedTrue">&nbsp;
-                  Nein<input type="radio" name="powerLed" id="powerLedFalse">
-                </p>
-              </div>
-              <div>
-                <p>CPU und Speicher werden korrekt erkannt: &nbsp;
-                  Ja<input type="radio" name="cpuRam" id="cpuRamTrue">&nbsp;
-                  Nein<input type="radio" name="cpuRam" id="cpuRamFalse">
-                </p>
-              </div>
-              <div>
-                <p>HD/SSD wird korrekt erkannt: &nbsp;
-                  Ja<input type="radio" name="hdSsd" id="hdSsdTrue">&nbsp;
-                  Nein<input type="radio" name="hdSsd" id="hdSsdFalse">
-                </p>
-              </div>
-              <div>
-                <p>Windows ist aktiviert: &nbsp;
-                  Ja<input type="radio" name="winAktiv" id="winAktivTrue">&nbsp;
-                  Nein<input type="radio" name="winAktiv" id="winAktivFalse">
-                </p>
-              </div>
-              <div>
-                <p>Gerätemanager zeigt keine Ausrufezeichen: &nbsp;
-                  Ja<input type="radio" name="gerät" id="gerätTrue">&nbsp;
-                  Nein<input type="radio" name="gerät" id="gerätFalse">
-                </p>
-              </div>
+              <label for="lueftergeraeusch">Alle Lüfter drehen Geräuschlos:
+                <input type="radio" name="lueftergeraeusch" id="lueftergeraeuschTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="lueftergeraeusch" id="lueftergeraeuschFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="powerLed">Power/HD in Betrieb LED´s funktionieren:
+                <input type="radio" name="powerLed" id="powerLedTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="powerLed" id="powerLedFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="cpuRam">CPU und Speicher werden korrekt erkannt:
+                <input type="radio" name="cpuRam" id="cpuRamTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="cpuRam" id="cpuRamFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="hdSsd">HD/SSD wird korrekt erkannt:
+                <input type="radio" name="hdSsd" id="hdSsdTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="hdSsd" id="hdSsdFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="winAktiv">Windows ist aktiviert:
+                <input type="radio" name="winAktiv" id="winAktivTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="winAktiv" id="winAktivFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="gerät">Gerätemanager zeigt keine Ausrufezeichen:
+                <input type="radio" name="gerät" id="gerätTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="gerät" id="gerätFalse" value="&#10008;">Nein
+              </label>
               
             </div>
             <div class="col50">
-              <div>
-                <p>Front Sound funktioniert: &nbsp;
-                  Ja<input type="radio" name="frontSound" id="frontSoundTrue">&nbsp;
-                  Nein<input type="radio" name="frontSound" id="frontSoundFalse">
-                </p>
-              </div>
-              <div>
-                <p>Rear Sound funktioniert: &nbsp;
-                  Ja<input type="radio" name="rearSound" id="rearSoundTrue">&nbsp;
-                  Nein<input type="radio" name="rearSound" id="rearSoundFalse">
-                </p>
-              </div>
-              <div>
-                <p>Front USB funktioniert: &nbsp;
-                  Ja<input type="radio" name="frontUSB" id="frontUSBTrue">&nbsp;
-                  Nein<input type="radio" name="frontUSB" id="frontUSBFalse">
-                </p>
-              </div>
-              <div>
-                <p>Rear USB funktioniert: &nbsp;
-                  Ja<input type="radio" name="rearUSB" id="rearUSBTrue">&nbsp;
-                  Nein<input type="radio" name="rearUSB" id="rearUSBFalse">
-                </p>
-              </div>
-              <div>
-                <p>CD/DVD offnet und liest Medien: &nbsp;
-                  Ja<input type="radio" name="cdDVD" id="cdDVDTrue">&nbsp;
-                  Nein<input type="radio" name="cdDVD" id="cdDVDFalse">
-                </p>
-              </div>
-              <div>
-                <p>LAN Funktioniert: &nbsp;
-                  Ja<input type="radio" name="lan" id="lanTrue">&nbsp;
-                  Nein<input type="radio" name="lan" id="lanFalse">
-                </p>
-              </div>
-              <div>
-                <p>WLAN Funktioniert: &nbsp;
-                  Ja<input type="radio" name="wlan" id="wlanTrue">&nbsp;
-                  Nein<input type="radio" name="wlan" id="wlanFalse">
-                </p>
-              </div>
+              <label for="frontSound">Front Sound funktioniert:
+                <input type="radio" name="frontSound" id="frontSoundTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="frontSound" id="frontSoundFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="rearSound">Rear Sound funktioniert:
+                <input type="radio" name="rearSound" id="rearSoundTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="rearSound" id="rearSoundFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="frontUSB">Front USB funktioniert:
+                <input type="radio" name="frontUSB" id="frontUSBTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="frontUSB" id="frontUSBFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="rearUSB">Rear USB funktioniert:
+                <input type="radio" name="rearUSB" id="rearUSBTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="rearUSB" id="rearUSBFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="cdDVD">CD/DVD öffnet und liest Medien:
+                <input type="radio" name="cdDVD" id="cdDVDTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="cdDVD" id="cdDVDFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="lan">LAN Funktioniert:
+                <input type="radio" name="lan" id="lanTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="lan" id="lanFalse" value="&#10008;">Nein
+              </label>
+              <br/>
+              <br/>
+              <label for="wlan">WLAN Funktioniert:
+                <input type="radio" name="wlan" id="wlanTrue" value="&#10003;">Ja &nbsp;&nbsp;
+                <input type="radio" name="wlan" id="wlanFalse" value="&#10008;">Nein
+              </label>
             </div>
-
           </div>
 
           <div class="btn-container">
             <div id="kunde-save">
               <div>Daten Speichern</div>
+            </div>
+
+            <div id="kunde-load">
+              <div>Daten Laden</div>
             </div>
 
             <div id="pdfCreate">
