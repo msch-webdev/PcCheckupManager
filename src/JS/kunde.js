@@ -75,6 +75,15 @@ kundenSave.addEventListener('click', () => {
     err.push(os);
   }
 
+  //Hohlt die Motherboard daten
+  const motherBoard = document.getElementById('motherBoard');
+  if(motherBoard.innerText!== '') {
+    console.log('Motherboard: ',motherBoard.innerText);
+  }
+  else {
+    err.push(motherBoard);
+  }
+
   // Hohlt die CPU daten
   const cpu = document.getElementById('cpu');
   if(cpu.innerText!== '') {
