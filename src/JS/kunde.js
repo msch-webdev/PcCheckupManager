@@ -1,6 +1,6 @@
-const {app, BrowserWindow, ipcRenderer} = require('electron');
-const fs = require('fs');
-const pfad = require('path');
+//const {app, BrowserWindow, ipcRenderer} = require('electron');
+//const fs = require('fs');
+//const pfad = require('path');
 
 
 
@@ -432,9 +432,11 @@ kundenSave.addEventListener('click', () => {
     console.log('alles ok')
   }
   else {
-    console.log(err);
+    console.log('Error Array => ', err);
     alert('Oha da wurden Felder nicht ausgefüllt');
     
   }
 
 });
+
+console.log('test');
