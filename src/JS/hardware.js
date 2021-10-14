@@ -1,6 +1,6 @@
-const {app, BrowserWindow, ipcRenderer} = require('electron');
-const fs = require('fs');
-const pfad = require('path');
+//const {app, BrowserWindow, ipcRenderer} = require('electron');
+//const fs = require('fs');
+//const pfad = require('path');
 const si = require('systeminformation');
 const hddSpace = require('hdd-space');
 
