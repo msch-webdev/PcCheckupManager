@@ -6,7 +6,8 @@
 
 /* 
   Colors:
-    Background = #2d2d2d
+    Background = #24292E
+    menu = #1D2125
     linear-gradient = (0deg, rgba(212,231,248,1) -10%, rgb(44, 143, 214) 100%);
     Gold = rgb(226, 192, 141);
 */
@@ -20,7 +21,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #2d2d2d;
+  background-color: #24292E;
 }
 
 body::-webkit-scrollbar { 
@@ -47,7 +48,7 @@ p {
 
 input {
   border: none;
-  background-color: #2d2d2d;
+  background-color: #24292E;
   border-bottom: 1px solid #fff;
   color: #fff;
 }
@@ -86,7 +87,7 @@ input {
   right: 10px;
   width: 20px;
   height: 20px;
-  border: 2px solid #fff;
+  border: 2px solid #1D2125;
   border-radius: 3px;
   font-size: 2em;
   text-align: center;
@@ -100,7 +101,7 @@ input {
   right: 40px;
   width: 20px;
   height: 20px;
-  border: 2px solid #fff;
+  border: 2px solid #1D2125;
   border-radius: 3px;
   font-size: 2em;
   text-align: center;
@@ -114,7 +115,7 @@ input {
   right: 70px;
   width: 20px;
   height: 20px;
-  border: 2px solid #fff;
+  border: 2px solid #1D2125;
   border-radius: 3px;
   font-size: 2em;
   text-align: center;
@@ -135,7 +136,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  border: 1px solid #fff;
+  border: 1px solid #1D2125;
   padding: 10px;
 }
 
@@ -173,7 +174,7 @@ input {
 #hardware-wrapper {
   width: 50%;
   height: auto;
-  border: 1px solid #fff;
+  border: 1px solid #1D2125;
   padding: 20px;
 }
 
@@ -212,7 +213,7 @@ input {
 #scans-wrapper {
   width: 50%;
   height: auto;
-  border: 1px solid #fff;
+  border: 1px solid #1D2125;
   padding: 20px;
 }
 
@@ -243,7 +244,7 @@ input {
 
 
 .scans {
-  border: 1px solid #fff;
+  border: 1px solid #1D2125;
 }
 
 .scans > h2 {
@@ -259,7 +260,7 @@ input {
 }
 
 .endkontrolle {
-  border: 1px solid #fff;
+  border: 1px solid #1D2125;
 }
 
 .endkontrolle > h2 {
@@ -392,5 +393,5 @@ input {
 
 .App-footer {
   height: 80px;
-  border: 1px solid #fff;
+  border: 1px solid #1D2125;
 }
