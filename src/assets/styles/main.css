@@ -34,16 +34,16 @@ body::-webkit-scrollbar {
 }
 
 h2 {
-  font-size: 3em;
+  font-size: 2.5em;
   color: rgb(226, 192, 141);
 }
 
 label {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 p {
-  font-size: 1.8em;
+  font-size: 1.5em;
 }
 
 input {
@@ -255,6 +255,10 @@ input {
   display: block;
 }
 
+#scans-wrapper > p {
+  margin-bottom: 40px;
+}
+
 #auffäligkeiten {
   display: block;
 }
@@ -269,7 +273,6 @@ input {
 
 .endkontrolle_container {
   display: flex;
-  margin: 20px 10%; 
 }
 
 .col50 {
