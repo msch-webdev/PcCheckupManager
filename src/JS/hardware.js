@@ -53,6 +53,26 @@ hardwareBtn.addEventListener('click', () => {
                                 </div>`;
   });
 
+  //Hohlt die Basis Daten des PC´s
+  //si.system().then(data => {console.log(data)});
+
+  //Hohlt die Motherboard & bios versionen
+  si.baseboard().then(data => {
+    console.log('Motherboard =>', data)
+    const motherBoard = document.getElementById('motherBoard');
+    let manufacturer = data.manufacturer;
+    let model = data.model;
+    let vers = data.version;
+
+    motherBoard.innerHTML = `<div class="motherBoard">
+                      <div>- Hersteller: ${manufacturer}</div>
+                      <div>- Model: ${model}</div>
+                      <div>- Version: ${vers}</div
+                     </div>`;
+
+
+  });
+
   //Hohlt Daten der CPU
   si.cpu().then(data => {
     console.log('CPU => ', data);
