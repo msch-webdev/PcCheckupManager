@@ -64,13 +64,17 @@ hardwareBtn.addEventListener('click', () => {
     let model = data.model;
     let vers = data.version;
 
-    motherBoard.innerHTML = `<div class="motherBoard">
+    si.bios().then(data => {
+      console.log('Bios =>', data)
+      let bios = data.version;
+      let release = data.releaseDate;
+      motherBoard.innerHTML = `<div class="motherBoard">
                       <div>- Hersteller: ${manufacturer}</div>
                       <div>- Model: ${model}</div>
                       <div>- Version: ${vers}</div
+                      <div>- Bios: ${bios} / Release: ${release}</div
                      </div>`;
-
-
+    });
   });
 
   //Hohlt Daten der CPU
