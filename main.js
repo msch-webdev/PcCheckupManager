@@ -1,23 +1,97 @@
-const { app, BrowserWindow, ipcMain, Menu} = require('electron')
+const { app, BrowserWindow, ipcMain, Menu, webContents, dialog} = require('electron');
+const remoteMain = require("@electron/remote/main");
+
 const remote = require('electron').remote;
 const path = require('path')
 
+remoteMain.initialize();
+
+let mainWindow;
 function createWindow () {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
+    fullscreen: false,
     width: 800,
     height: 850,
     webPreferences: {
       /* preload: path.join(__dirname, 'preload.js'), */
       nodeIntegration: true,
       contextIsolation: false,
-    }
+    },
+    //frame: false,
+    
   })
-
+  remoteMain.enable(mainWindow.webContents);
   mainWindow.loadFile('src/Templates/index.html')
-  //mainWindow.webContents.openDevTools()
-
+  mainWindow.webContents.openDevTools()
   
 }
+
+ipcMain.on('openCustomerWindow', function(event) {
+
+  // Native API des betriebssystems
+  //dialog.showErrorBox('Ipc', 'openWindow');
+  
+  const customerWin = new BrowserWindow({
+    // startet das window nicht, siehe customerWin.once
+    show: false,
+    parent: mainWindow,
+    width: 500, 
+    height: 600,
+    modal: true,
+  })
+  customerWin.loadFile('src/Templates/kunde.html')
+
+  // erst wenn Window fertig geladen ist...
+  customerWin.once('ready-to-show', () => {
+    // setzte Window show auf true;
+    customerWin.show();
+  })
+})
+
+ipcMain.on('close', function () {
+  app.quit()
+})
+
+ipcMain.on('fullScreen', function () {
+  if (!mainWindow.isMaximized()) {
+    mainWindow.maximize();          
+  } else {
+    mainWindow.unmaximize();
+  }
+  
+})
+
+ipcMain.on('minimizeWindow', function () {
+  mainWindow.minimize();
+  
+})
+
+// Drucken der HTML Seite
+ipcMain.on('pdfView', () => {
+
+  /* var options = {
+      silent: false,
+      printBackground: false,
+      color: false,
+      margin: {
+          marginType: 'printableArea'
+      },
+      landscape: false,
+      pagesPerSheet: 1,
+      collate: false,
+      copies: 1,
+      header: 'Header of the Page',
+      footer: 'Footer of the Page'
+  }
+  let win = BrowserWindow.getFocusedWindow();
+
+  win.webContents.print(options, (success, failureReason) => {
+      if (!success) console.log(failureReason);
+
+      console.log('Print Initiated');
+  }); */
+  
+})
 
 app.whenReady().then(() => {
   createWindow()
@@ -26,7 +100,6 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
-
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
