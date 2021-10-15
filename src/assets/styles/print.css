@@ -1,0 +1,48 @@
+h1 {
+  text-align: center;
+}
+
+#date {
+}
+
+#auftragsnummer {
+}
+
+.VnNn {
+  width: 60%;
+  height: auto;
+}
+
+#vorname {
+  float: left;
+}
+
+#nachname {
+  float: right;
+}
+
+.BnPw {
+  width: 60%;
+  height: auto;
+}
+
+#benutzer {
+  float: left;
+}
+
+#passwort {
+  float: right;
+}
+
+
+@media print {
+
+  #load {
+    display: none;
+  }
+
+  #drucken {
+    display: none;
+  }
+
+}
