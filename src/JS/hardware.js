@@ -1,3 +1,4 @@
+'use strict';
 //const {app, BrowserWindow, ipcRenderer} = require('electron');
 //const fs = require('fs');
 //const pfad = require('path');
@@ -71,7 +72,7 @@ hardwareBtn.addEventListener('click', () => {
       motherBoard.innerHTML = `<div class="motherBoard">
                       <div>- Hersteller: ${manufacturer}</div>
                       <div>- Model: ${model}</div>
-                      <div>- Version: ${vers}</div
+                      <div>- Version: ${vers}</div>
                       <div>- Bios: ${bios} / Release: ${release}</div
                      </div>`;
     });
@@ -137,7 +138,7 @@ hardwareBtn.addEventListener('click', () => {
           type = "SSD";
         }
 
-        laufwerkeName.innerHTML += `<div class="cpu">
+        laufwerkeName.innerHTML += `<div class="hardDisc">
                                     <div>- Name: ${name}</div>
                                     <div class="tab">- Type: ${type}</div>
                                     <div class="tab">- Interface: ${interfaceInfo}</div
@@ -159,7 +160,7 @@ hardwareBtn.addEventListener('click', () => {
         letter = info.parts[i].letter;
         free = info.parts[i].free;
         size = info.parts[i].size;
-        laufwerke.innerHTML += `<div>- ${letter} ${free} frei von ${size}</div>`;
+        laufwerke.innerHTML += `<div>- <span>${letter}</span> <span>${free}</span> frei von <span>${size}</span></div>`;
       }
     };
   });
