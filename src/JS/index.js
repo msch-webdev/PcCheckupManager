@@ -1,3 +1,4 @@
+'use strict';
 //const {app, BrowserWindow, ipcRenderer} = require('electron');
 const {ipcRenderer} = require('electron');
 const {BrowserWindow} = require('@electron/remote');
@@ -39,11 +40,7 @@ document.getElementById("minimizeWindow").addEventListener("click", function (e)
   ipcRenderer.send('minimizeWindow'); 
 });
 
-// druckvorschau
-document.getElementById("pdfView").addEventListener("click", function (e) {
-  ipcRenderer.send('pdfView'); 
-  window.print();
-});
+
 
 
 
