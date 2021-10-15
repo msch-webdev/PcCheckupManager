@@ -1,12 +1,13 @@
 const { app, BrowserWindow, ipcMain, Menu, webContents, dialog} = require('electron');
 const remoteMain = require("@electron/remote/main");
-
+const fs = require('fs');
 const remote = require('electron').remote;
 const path = require('path')
 
 remoteMain.initialize();
 
 let mainWindow;
+let customerWin;
 function createWindow () {
   mainWindow = new BrowserWindow({
     fullscreen: false,
@@ -16,6 +17,7 @@ function createWindow () {
       /* preload: path.join(__dirname, 'preload.js'), */
       nodeIntegration: true,
       contextIsolation: false,
+      enableRemoteModule: true,
     },
     //frame: false,
     
@@ -31,15 +33,22 @@ ipcMain.on('openCustomerWindow', function(event) {
   // Native API des betriebssystems
   //dialog.showErrorBox('Ipc', 'openWindow');
   
-  const customerWin = new BrowserWindow({
+  customerWin = new BrowserWindow({
     // startet das window nicht, siehe customerWin.once
     show: false,
     parent: mainWindow,
-    width: 500, 
-    height: 600,
+    width: 660, 
+    height: 780,
     modal: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
+    },
   })
-  customerWin.loadFile('src/Templates/kunde.html')
+  
+  customerWin.loadFile('src/Templates/print.html')
+  customerWin.webContents.openDevTools()
 
   // erst wenn Window fertig geladen ist...
   customerWin.once('ready-to-show', () => {
@@ -67,7 +76,26 @@ ipcMain.on('minimizeWindow', function () {
 })
 
 // Drucken der HTML Seite
-ipcMain.on('pdfView', () => {
+ipcMain.on('druck', (event) => {
+
+  dialog.showOpenDialog(customerWin, {
+    properties: ['openFile'],
+    filters: [{name: 'Texte', extensions: ['json']}]
+  }).then(result => {
+    if (result.canceled === false) {
+      let dateipfad = result.filePaths[0];
+
+      fs.readFile(dateipfad, (err, dateiinhalt) => {
+        if(err) {
+          return console.log(err);
+        }
+
+        let customer = JSON.parse(dateiinhalt);
+        
+        event.sender.send('JSONobjekt', customer)
+      });
+    }
+  })
 
   /* var options = {
       silent: false,
