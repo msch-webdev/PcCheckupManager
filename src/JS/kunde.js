@@ -259,7 +259,7 @@ kundenSave.addEventListener('click', () => {
   }
   else {
     err.push(ccleanerB);
-    CcleanerB.setAttribute( 'class', 'error' )
+    ccleanerB.setAttribute( 'class', 'error' )
   }
 
   // Hohlt die CCleaner Registry 1
@@ -270,7 +270,7 @@ kundenSave.addEventListener('click', () => {
   }
   else {
     err.push(ccleanerR1);
-    CcleanerR1.setAttribute( 'class', 'error' )
+    ccleanerR1.setAttribute( 'class', 'error' )
   }
 
   // Hohlt die CCleaner Registry 1
@@ -281,7 +281,7 @@ kundenSave.addEventListener('click', () => {
   }
   else {
     err.push(ccleanerR2);
-    CcleanerR2.setAttribute( 'class', 'error' )
+    ccleanerR2.setAttribute( 'class', 'error' )
   }
 
   // Hohlt die CCleaner Registry 1
@@ -320,23 +320,19 @@ kundenSave.addEventListener('click', () => {
   // Hohlt hochdruck checkbox
   const hochdruck = document.getElementById('hochdruck');
   if(hochdruck.checked === true) {
-    hochdruck.classList.remove("error");
     customer.Hochdruck = hochdruck.value;
   }
   else {
-    err.push(hochdruck);
-    hochdruck.setAttribute( 'class', 'error' )
+    customer.Hochdruck = '__';
   }
 
   // Hohlt Gereinigt checkbox
   const gereinigt = document.getElementById('gereinigt');
   if(gereinigt.checked === true) {
-    gereinigt.classList.remove("error");
     customer.Gereinigt = gereinigt.value;
   }
   else {
-    err.push(gereinigt);
-    gereinigt.setAttribute( 'class', 'error' )
+    customer.Gereinigt = '__';
   }
 
   // Hohlt den Inhalt der Textarea
@@ -353,36 +349,36 @@ kundenSave.addEventListener('click', () => {
   
   //#########################################################
 
-  // Prüft die RadioButtons => lüftergeräusch
-  const lüftergeräusch = document.getElementsByName('lueftergeraeusch');
+  // Prüft die RadioButtons => luefter
+  const luefter = document.getElementsByName('lueftergeraeusch');
 
-  if(lüftergeräusch[0].checked === true) {
-    lüftergeräusch.classList.remove("error");
-    customer.Lüftergeräusch = lüftergeräusch[0].value;
+  if(luefter[0].checked === true) {
+    luefter[0].parentElement.classList.remove('error');
+    customer.luefter = luefter[0].value;
   }
-  else if(lüftergeräusch[1].checked === true) {
-    lüftergeräusch.classList.remove("error");
-    customer.Lüftergeräusch = lüftergeräusch[1].value;
+  else if(luefter[1].checked === true) {
+    luefter[1].parentElement.classList.remove('error');
+    customer.luefter = luefter[1].value;
   }
   else {
-    err.push(lüftergeräusch[0].parentElement);
-    lüftergeräusch.setAttribute( 'class', 'error' )
+    err.push(luefter[0].parentElement);
+    luefter[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => powerLed
   const powerLed = document.getElementsByName('powerLed');
 
   if(powerLed[0].checked === true) {
-    powerLed.classList.remove("error");
+    powerLed[0].parentElement.classList.remove('error');
     customer.PowerLed = powerLed[0].value;
   }
   else if(powerLed[1].checked === true) {
-    powerLed.classList.remove("error");
+    powerLed[1].parentElement.classList.remove('error');
     customer.PowerLed = powerLed[1].value;
   }
   else {
     err.push(powerLed[0].parentElement);
-    powerLed.setAttribute( 'class', 'error' )
+    powerLed[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => cpuRam
@@ -390,175 +386,175 @@ kundenSave.addEventListener('click', () => {
 
   if(cpuRam[0].checked === true) {
     customer.CpuRam = cpuRam[0].value;
-    cpuRam.classList.remove("error");
+    cpuRam[0].parentElement.classList.remove('error');
   }
   else if(cpuRam[1].checked === true) {
-    cpuRam.classList.remove("error");
+    cpuRam[1].parentElement.classList.remove('error');
     customer.CpuRam = cpuRam[1].value;
   }
   else {
     err.push(cpuRam[0].parentElement);
-    cpuRam.setAttribute( 'class', 'error' )
+    cpuRam[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => hdSsd
   const hdSsd = document.getElementsByName('hdSsd');
 
   if(hdSsd[0].checked === true) {
-    hdSsd.classList.remove("error");
+    hdSsd[0].parentElement.classList.remove('error');
     customer.HdSsd = hdSsd[0].value;
   }
   else if(hdSsd[1].checked === true) {
-    hdSsd.classList.remove("error");
+    hdSsd[1].parentElement.classList.remove('error');
     customer.HdSsd = hdSsd[1].value;
   }
   else {
     err.push(hdSsd[0].parentElement);
-    hdSsd.setAttribute( 'class', 'error' )
+    hdSsd[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => winAktiv
   const winAktiv = document.getElementsByName('winAktiv');
 
   if(winAktiv[0].checked === true) {
-    winAktiv.classList.remove("error");
+    winAktiv[0].parentElement.classList.remove('error');("error");
     customer.winAktiv = winAktiv[0].value;
   }
   else if(winAktiv[1].checked === true) {
-    winAktiv.classList.remove("error");
+    winAktiv[1].parentElement.classList.remove('error');("error");
     customer.winAktiv = winAktiv[1].value;
   }
   else {
     err.push(winAktiv[0].parentElement);
-    winAktiv.setAttribute( 'class', 'error' )
+    winAktiv[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => gerät
   const gerät = document.getElementsByName('gerät');
 
   if(gerät[0].checked === true) {
-    gerät.classList.remove("error");
+    gerät[0].parentElement.classList.remove('error');("error");
     customer.Gerät = gerät[0].value;
   }
   else if(gerät[1].checked === true) {
-    gerät.classList.remove("error");
+    gerät[1].parentElement.classList.remove('error');("error");
     customer.Gerät = gerät[1].value;
   }
   else {
     err.push(gerät[0].parentElement);
-    gerät.setAttribute( 'class', 'error' )
+    gerät[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => frontSound
   const frontSound = document.getElementsByName('frontSound');
 
   if(frontSound[0].checked === true) {
-    frontSound.classList.remove("error");
+    frontSound[0].parentElement.classList.remove('error');("error");
     customer.FrontSound = frontSound[0].value;
   }
   else if(frontSound[1].checked === true) {
-    frontSound.classList.remove("error");
+    frontSound[1].parentElement.classList.remove('error');("error");
     customer.FrontSound = frontSound[1].value;
   }
   else {
     err.push(frontSound[0].parentElement);
-    frontSound.setAttribute( 'class', 'error' )
+    frontSound[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => rearSound
   const rearSound = document.getElementsByName('rearSound');
 
   if(rearSound[0].checked === true) {
-    rearSound.classList.remove("error");
+    rearSound[0].parentElement.classList.remove('error');("error");
     customer.RearSound = rearSound[0].value;
   }
   else if(rearSound[1].checked === true) {
-    rearSound.classList.remove("error");
+    rearSound[1].parentElement.classList.remove('error');("error");
     customer.RearSound = rearSound[1].value;
   }
   else {
     err.push(rearSound[0].parentElement);
-    rearSound.setAttribute( 'class', 'error' )
+    rearSound[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => frontUSB
   const frontUSB = document.getElementsByName('frontUSB');
 
   if(frontUSB[0].checked === true) {
-    frontUSB.classList.remove("error");
+    frontUSB[0].parentElement.classList.remove('error');("error");
     customer.FrontUSB = frontUSB[0].value;
   }
   else if(frontUSB[1].checked === true) {
-    frontUSB.classList.remove("error");
+    frontUSB[1].parentElement.classList.remove('error');("error");
     customer.FrontUSB = frontUSB[1].value;
   }
   else {
     err.push(frontUSB[0].parentElement);
-    frontUSB.setAttribute( 'class', 'error' );
+    frontUSB[0].parentElement.setAttribute( 'class', 'error' );
   }
 
   // Prüft die RadioButtons => rearUSB
   const rearUSB = document.getElementsByName('rearUSB');
 
   if(rearUSB[0].checked === true) {
-    rearUSB.classList.remove("error");
+    rearUSB[0].parentElement.classList.remove('error');("error");
     customer.RearUSB = rearUSB[0].value;
   }
   else if(rearUSB[1].checked === true) {
-    rearUSB.classList.remove("error");
+    rearUSB[1].parentElement.classList.remove('error');("error");
     customer.RearUSB = rearUSB[1].value;
   }
   else {
     err.push(rearUSB[0].parentElement);
-    rearUSB.setAttribute( 'class', 'error' );
+    rearUSB[0].parentElement.setAttribute( 'class', 'error' );
   }
 
   // Prüft die RadioButtons => cdDVD
   const cdDVD = document.getElementsByName('cdDVD');
 
   if(cdDVD[0].checked === true) {
-    cdDVD.classList.remove("error");
+    cdDVD[0].parentElement.classList.remove('error');("error");
     customer.CdDVD = cdDVD[0].value;
   }
   else if(cdDVD[1].checked === true) {
-    cdDVD.classList.remove("error");
+    cdDVD[1].parentElement.classList.remove('error');("error");
     customer.CdDVD = cdDVD[1].value;
   }
   else {
     err.push(cdDVD[0].parentElement);
-    cdDVD.setAttribute( 'class', 'error' );
+    cdDVD[0].parentElement.setAttribute( 'class', 'error' );
   }
 
   // Prüft die RadioButtons => lan
   const lan = document.getElementsByName('lan');
 
   if(lan[0].checked === true) {
-    lan.classList.remove("error");
+    lan[0].parentElement.classList.remove('error');("error");
     customer.Lan = lan[0].value;
   }
   else if(lan[1].checked === true) {
-    lan.classList.remove("error");
+    lan[1].parentElement.classList.remove('error');("error");
     customer.Lan = lan[1].value;
   }
   else {
     err.push(lan[0].parentElement);
-    lan.setAttribute( 'class', 'error' );
+    lan[0].parentElement.setAttribute( 'class', 'error' );
   }
 
   // Prüft die RadioButtons => lan
   const wlan = document.getElementsByName('wlan');
 
   if(wlan[0].checked === true) {
-    wlan.classList.remove("error");
+    wlan[0].parentElement.classList.remove('error');("error");
     customer.Wlan = wlan[0].value;
   }
   else if(wlan[1].checked === true) {
-    wlan.classList.remove("error");
+    wlan[1].parentElement.classList.remove('error');("error");
     customer.Wlan = wlan[1].value;
   }
   else {
     err.push(wlan[0].parentElement);
-    wlan.setAttribute( 'class', 'error' );
+    wlan[0].parentElement.setAttribute( 'class', 'error' );
   }
 
 
@@ -574,5 +570,6 @@ kundenSave.addEventListener('click', () => {
   }
   else {
     console.log('Error Array => ', err);
+    err = [];
   }
 });
