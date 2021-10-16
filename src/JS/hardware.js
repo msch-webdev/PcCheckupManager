@@ -1,7 +1,4 @@
 'use strict';
-//const {app, BrowserWindow, ipcRenderer} = require('electron');
-//const fs = require('fs');
-//const pfad = require('path');
 const si = require('systeminformation');
 const hddSpace = require('hdd-space');
 
@@ -53,9 +50,6 @@ hardwareBtn.addEventListener('click', () => {
                                   <div>- Serien Nr: ${serialNr}</div>
                                 </div>`;
   });
-
-  //Hohlt die Basis Daten des PC´s
-  //si.system().then(data => {console.log(data)});
 
   //Hohlt die Motherboard & bios versionen
   si.baseboard().then(data => {
