@@ -9,7 +9,6 @@ document.getElementById("load").addEventListener("click", function (e) {
 
 ipcRenderer.on('JSONobjekt', (event, arg) => {
   customer = arg;
-  //Todo:offnet & Druckt eine gespeicherte alte datei
   const printWrapper = document.getElementById('print-wrapper');
   printWrapper.innerHTML += `
   
