@@ -112,9 +112,3 @@ ipcRenderer.on('JSONobjekt', (event, arg) => {
   </div>`;
   
 })
-
-// druckvorschau
-document.getElementById("drucken").addEventListener("click", function (e) {
-  //ipcRenderer.send('druck'); 
-  window.print();
-});
