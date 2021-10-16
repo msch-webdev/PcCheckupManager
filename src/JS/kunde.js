@@ -1,6 +1,3 @@
-//const {app, BrowserWindow, ipcRenderer} = require('electron');
-//const fs = require('fs');
-//const pfad = require('path');
 'use strict';
 let customer = {};
 
@@ -29,27 +26,6 @@ kundenSave.addEventListener('click', () => {
   else {
     err.push(auftragsnr);
   }
-
-
-  //Hohlt den Vornamen
-  /* const vorname = document.getElementById('vorname');
-  if(vorname.value !== '') {
-    console.log('Vorname: ', vorname.value);
-    customer.Vorname = vorname.value;
-  }
-  else {
-    err.push(vorname);
-  } */
-
-  //Hohlt den Nachnamen
-  /* const nachname = document.getElementById('nachname');
-  if(nachname.value !== '') {
-    console.log('Nachname: ',nachname.value);
-    customer.Nachname = nachname.value;
-  }
-  else {
-    err.push(nachname);
-  } */
 
   //Hohlt den Anmelde Namen
   const benutzerName = document.getElementById('benutzerName');
@@ -144,7 +120,6 @@ kundenSave.addEventListener('click', () => {
 
   // Hohlt die Ram daten
   const memoryGb = document.getElementById('ram');
-  //const memoryType = document.getElementById('ramtype');
   if(memoryGb.innerText!== '') {
     console.log('RAM: ',memoryGb.innerText);
 
@@ -585,5 +560,4 @@ kundenSave.addEventListener('click', () => {
     alert('Oha da wurden Felder nicht ausgefüllt');
     
   }
-
 });
