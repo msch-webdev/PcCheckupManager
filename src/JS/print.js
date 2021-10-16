@@ -95,7 +95,7 @@ ipcRenderer.on('JSONobjekt', (event, arg) => {
     </div>
 
     <div class="checks">
-    <span>Alle Lüfter drehen Geräuschlos: <p>${customer.Lüftergeräusch}</p></span><br/>
+    <span>Alle Lüfter drehen Geräuschlos: <p>${customer.luefter}</p></span><br/>
     <span>Power/HD in Betrieb LED´s funktionieren: <p>${customer.PowerLed}</p></span><br/>
     <span>CPU und Speicher werden korrekt erkannt: <p>${customer.CpuRam}</p></span><br/>
     <span>HD/SSD wird korrekt erkannt: <p>${customer.HdSsd}</p></span><br/>
