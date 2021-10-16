@@ -1,8 +1,5 @@
-const {ipcRenderer, dialog} = require('electron');
-const fs = require('fs');
-const pfad = require('path');
-let pfadname = pfad.join(__dirname, "/../data")
-//console.log(pfadname);
+const {ipcRenderer} = require('electron');
+
 let customer;
 
 
@@ -115,7 +112,6 @@ ipcRenderer.on('JSONobjekt', (event, arg) => {
   </div>`;
   
 })
-
 
 // druckvorschau
 document.getElementById("drucken").addEventListener("click", function (e) {
