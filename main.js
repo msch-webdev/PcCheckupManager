@@ -37,7 +37,7 @@ ipcMain.on('openCustomerWindow', function(event) {
     // startet das window nicht, siehe customerWin.once
     show: false,
     parent: mainWindow,
-    width: 660, 
+    width: 750, 
     height: 780,
     modal: true,
     webPreferences: {
