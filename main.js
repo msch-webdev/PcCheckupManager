@@ -23,7 +23,7 @@ function createWindow () {
   remoteMain.enable(mainWindow.webContents);
   mainWindow.setMenuBarVisibility(false)
   mainWindow.loadFile('src/Templates/index.html')
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
   
 }
 
@@ -46,7 +46,7 @@ ipcMain.on('openCustomerWindow', function(event) {
   customerWin.setMenuBarVisibility(false)
   
   customerWin.loadFile('src/Templates/print.html')
-  customerWin.webContents.openDevTools()
+  //customerWin.webContents.openDevTools()
 
   // ... erst wenn Window fertig geladen ist...
   customerWin.once('ready-to-show', () => {
