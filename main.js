@@ -1,13 +1,12 @@
-const { app, BrowserWindow, ipcMain, Menu, webContents, dialog} = require('electron');
+const { app, BrowserWindow, ipcMain, dialog} = require('electron');
 const remoteMain = require("@electron/remote/main");
 const fs = require('fs');
-const remote = require('electron').remote;
-const path = require('path')
 
 remoteMain.initialize();
 
 let mainWindow;
 let customerWin;
+
 function createWindow () {
   mainWindow = new BrowserWindow({
     fullscreen: false,
@@ -15,12 +14,10 @@ function createWindow () {
     height: 850,
     icon: './src/assets/img/logo.ico',
     webPreferences: {
-      /* preload: path.join(__dirname, 'preload.js'), */
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
     },
-    //frame: false,
     
   })
   remoteMain.enable(mainWindow.webContents);
@@ -31,12 +28,9 @@ function createWindow () {
 }
 
 ipcMain.on('openCustomerWindow', function(event) {
-
-  // Native API des betriebssystems
-  //dialog.showErrorBox('Ipc', 'openWindow');
   
   customerWin = new BrowserWindow({
-    // startet das window nicht, siehe customerWin.once
+    // startet das window nicht, siehe customerWin.once ...
     show: false,
     parent: mainWindow,
     width: 750, 
@@ -54,32 +48,14 @@ ipcMain.on('openCustomerWindow', function(event) {
   customerWin.loadFile('src/Templates/print.html')
   customerWin.webContents.openDevTools()
 
-  // erst wenn Window fertig geladen ist...
+  // ... erst wenn Window fertig geladen ist...
   customerWin.once('ready-to-show', () => {
     // setzte Window show auf true;
     customerWin.show();
   })
 })
 
-/* ipcMain.on('close', function () {
-  app.quit()
-})
-
-ipcMain.on('fullScreen', function () {
-  if (!mainWindow.isMaximized()) {
-    mainWindow.maximize();          
-  } else {
-    mainWindow.unmaximize();
-  }
-  
-})
-
-ipcMain.on('minimizeWindow', function () {
-  mainWindow.minimize();
-  
-}) */
-
-// Drucken der HTML Seite
+// Drucken der print.html Seite
 ipcMain.on('druck', (event) => {
 
   dialog.showOpenDialog(customerWin, {
