@@ -13,6 +13,7 @@ function createWindow () {
     fullscreen: false,
     width: 800,
     height: 850,
+    icon: './src/assets/img/logo.ico',
     webPreferences: {
       /* preload: path.join(__dirname, 'preload.js'), */
       nodeIntegration: true,
@@ -23,6 +24,7 @@ function createWindow () {
     
   })
   remoteMain.enable(mainWindow.webContents);
+  mainWindow.setMenuBarVisibility(false)
   mainWindow.loadFile('src/Templates/index.html')
   mainWindow.webContents.openDevTools()
   
@@ -40,12 +42,14 @@ ipcMain.on('openCustomerWindow', function(event) {
     width: 750, 
     height: 780,
     modal: true,
+    icon: './src/assets/img/logo.ico',
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
     },
   })
+  customerWin.setMenuBarVisibility(false)
   
   customerWin.loadFile('src/Templates/print.html')
   customerWin.webContents.openDevTools()
@@ -57,7 +61,7 @@ ipcMain.on('openCustomerWindow', function(event) {
   })
 })
 
-ipcMain.on('close', function () {
+/* ipcMain.on('close', function () {
   app.quit()
 })
 
@@ -73,7 +77,7 @@ ipcMain.on('fullScreen', function () {
 ipcMain.on('minimizeWindow', function () {
   mainWindow.minimize();
   
-})
+}) */
 
 // Drucken der HTML Seite
 ipcMain.on('druck', (event) => {
@@ -96,29 +100,6 @@ ipcMain.on('druck', (event) => {
       });
     }
   })
-
-  /* var options = {
-      silent: false,
-      printBackground: false,
-      color: false,
-      margin: {
-          marginType: 'printableArea'
-      },
-      landscape: false,
-      pagesPerSheet: 1,
-      collate: false,
-      copies: 1,
-      header: 'Header of the Page',
-      footer: 'Footer of the Page'
-  }
-  let win = BrowserWindow.getFocusedWindow();
-
-  win.webContents.print(options, (success, failureReason) => {
-      if (!success) console.log(failureReason);
-
-      console.log('Print Initiated');
-  }); */
-  
 })
 
 app.whenReady().then(() => {
