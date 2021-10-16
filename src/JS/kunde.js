@@ -32,24 +32,24 @@ kundenSave.addEventListener('click', () => {
 
 
   //Hohlt den Vornamen
-  const vorname = document.getElementById('vorname');
+  /* const vorname = document.getElementById('vorname');
   if(vorname.value !== '') {
     console.log('Vorname: ', vorname.value);
     customer.Vorname = vorname.value;
   }
   else {
     err.push(vorname);
-  }
+  } */
 
   //Hohlt den Nachnamen
-  const nachname = document.getElementById('nachname');
+  /* const nachname = document.getElementById('nachname');
   if(nachname.value !== '') {
     console.log('Nachname: ',nachname.value);
     customer.Nachname = nachname.value;
   }
   else {
     err.push(nachname);
-  }
+  } */
 
   //Hohlt den Anmelde Namen
   const benutzerName = document.getElementById('benutzerName');
@@ -125,12 +125,15 @@ kundenSave.addEventListener('click', () => {
   if(cpu.innerText!== '') {
     console.log('CPU: ',cpu.innerText);
 
-    let cpuModel = cpu.children[0].children[0].innerText;
-    let cores = cpu.children[0].children[1].innerText;
+    let cpuVendor = cpu.children[0].children[0].innerText;
+    let cpuModel = cpu.children[0].children[1].innerText;
+    let cores = cpu.children[0].children[2].innerText;
 
+    cpuVendor = cpuVendor.split(':');
     cpuModel = cpuModel.split(':');
     cores = cores.split(':');
 
+    customer.cpuManufacturer = cpuVendor[1].trim();
     customer.cpuModel = cpuModel[1].trim();
     customer.cores = cores[1].trim();
 
