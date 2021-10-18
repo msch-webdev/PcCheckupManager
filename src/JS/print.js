@@ -5,6 +5,11 @@ let customer;
 
 document.getElementById("load").addEventListener("click", function (e) {
   ipcRenderer.send('druck'); 
+  console.log('druck click');
+});
+
+document.getElementById("drucken").addEventListener("click", function (e) { 
+  window.print();
 });
 
 ipcRenderer.on('JSONobjekt', (event, arg) => {
