@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog} = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, ipcRenderer} = require('electron');
 const remoteMain = require("@electron/remote/main");
 const fs = require('fs');
 
@@ -134,6 +134,7 @@ ipcMain.on('openCustomerWindow', function(event) {
     customerWin.show();
   })
 })
+
 
 // Drucken der print.html Seite
 ipcMain.on('druck', (event) => {

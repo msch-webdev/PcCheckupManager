@@ -558,15 +558,17 @@ kundenSave.addEventListener('click', () => {
   }
 
 
-  const pfad = `src/data/${auftragsnr.value}.json`;
-
+  // todo: dynamisch erstellen des kunden ordners
+  const pfad = `kunden\\${auftragsnr.value}.json`;
+  
   if(err.length === 0) {
-
+    
     const jsonData = JSON.stringify(customer, null, 2);
-    fs.writeFile(pfad, jsonData, (err, result) => {
-      if(err) console.log('error', err);
-    });
 
+    fs.writeFile(pfad, jsonData, (err) => {
+      if(err) console.log('error', err);
+    })
+    
   }
   else {
     console.log('Error Array => ', err);
