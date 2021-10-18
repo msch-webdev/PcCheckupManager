@@ -6,8 +6,11 @@ remoteMain.initialize();
 
 let mainWindow;
 let customerWin;
+let loadingwindow;
 
-function createWindow () {
+// Ohne Ladebild
+
+/* function createWindow () {
   mainWindow = new BrowserWindow({
     fullscreen: false,
     width: 800,
@@ -26,6 +29,83 @@ function createWindow () {
   //mainWindow.webContents.openDevTools()
   
 }
+
+app.whenReady().then(() => {
+  
+  createWindow()
+
+  app.on('activate', function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
+}) */
+
+// Mit Ladebild
+
+function createWindow () {
+  mainWindow = new BrowserWindow({
+    show: false,
+    fullscreen: false,
+    width: 800,
+    height: 850,
+    icon: './src/assets/img/logo.ico',
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
+    },
+    
+  })
+  remoteMain.enable(mainWindow.webContents);
+
+  mainWindow.setMenuBarVisibility(false)
+  mainWindow.loadFile('src/Templates/index.html')
+  //mainWindow.webContents.openDevTools()
+
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+    loadingwindow.hide();
+  })
+  
+}
+
+
+app.on("ready", () => {
+
+  loadingwindow = new BrowserWindow({
+    frame : false,
+    movable : false,
+    width: 500,
+    height: 500,
+    transparent: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
+    },
+  })
+
+  loadingwindow.loadFile('src/Templates/loding.html')
+  loadingwindow.show();
+
+})
+
+setTimeout(() => {
+  app.whenReady().then(() => {  
+    createWindow()
+
+    app.on('activate', function () {
+      if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    })
+  })
+}, 3000);
+
+
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
 
 ipcMain.on('openCustomerWindow', function(event) {
   
@@ -78,16 +158,5 @@ ipcMain.on('druck', (event) => {
   })
 })
 
-app.whenReady().then(() => {
-  createWindow()
-
-  app.on('activate', function () {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
-})
-
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
-})
 
 
