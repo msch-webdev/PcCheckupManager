@@ -84,7 +84,7 @@ app.on("ready", () => {
     },
   })
 
-  loadingwindow.loadFile('src/Templates/loding.html')
+  loadingwindow.loadFile('src/Templates/loading.html')
   loadingwindow.show();
 
 })
