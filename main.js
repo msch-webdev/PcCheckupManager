@@ -45,7 +45,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     show: false,
     fullscreen: false,
-    width: 800,
+    width: 900,
     height: 850,
     icon: './src/assets/img/logo.ico',
     webPreferences: {
