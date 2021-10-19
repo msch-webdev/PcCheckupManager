@@ -128,7 +128,7 @@ hardwareBtn.addEventListener('click', () => {
 		let size = '';
 		for (let i = 0; i < info.parts.length; i++) {
 			let usb = parseFloat(info.parts[i].size);
-			if (usb > 10) {
+			if (usb > 17) {
 				letter = info.parts[i].letter;
 				free = info.parts[i].free;
 				size = info.parts[i].size;
