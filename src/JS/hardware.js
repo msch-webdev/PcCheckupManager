@@ -1,6 +1,7 @@
 'use strict';
 const si = require('systeminformation');
 const hddSpace = require('hdd-space');
+
 //Eventlistener zum starten der Hardware abfrage
 const hardwareBtn = document.getElementById('hardwareBtn');
 hardwareBtn.addEventListener('click', () => {
@@ -127,7 +128,7 @@ hardwareBtn.addEventListener('click', () => {
 		let size = '';
 		for (let i = 0; i < info.parts.length; i++) {
 			let usb = parseFloat(info.parts[i].size);
-			if (usb > 5) {
+			if (usb > 10) {
 				letter = info.parts[i].letter;
 				free = info.parts[i].free;
 				size = info.parts[i].size;
