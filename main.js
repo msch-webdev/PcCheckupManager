@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog, ipcRenderer} = require('electron');
+const { app, BrowserWindow, ipcMain, dialog} = require('electron');
 const remoteMain = require("@electron/remote/main");
 const fs = require('fs');
 
@@ -97,7 +97,7 @@ setTimeout(() => {
       if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
   })
-}, 3000);
+}, 4000);
 
 
 app.on('window-all-closed', function () {
