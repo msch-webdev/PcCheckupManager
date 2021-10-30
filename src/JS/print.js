@@ -95,7 +95,8 @@ ipcRenderer.on('JSONobjekt', (event, arg) => {
       <span>2. Systembereinigung: <p>${customer.Systembereinigung2}</p> MB / GB</span><br/>
       <span>Gerät innen mit Hochdruck gereinigt: <p>${customer.Hochdruck}</p></span><br/>
       <span>Gerät außen gereinigt: <p>${customer.Gereinigt}</p></span><br/>
-      <span>Auffäligkeiten (Kurzbericht): <p>${customer.Auffäligkeiten}</p></span><br/>
+      <span>Auffäligkeiten (Kurzbericht): </span><br/>
+      <textarea cols="40" rows="6" class="textfield">${customer.Auffäligkeiten}</textarea>
     </div>
 
     <div class="checks">
@@ -116,3 +117,4 @@ ipcRenderer.on('JSONobjekt', (event, arg) => {
   </div>`;
   
 })
+{/* <p class="textfield">${customer.Auffäligkeiten}</p> */}
