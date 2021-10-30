@@ -31,31 +31,35 @@ kundenSave.addEventListener('click', () => {
 
   //Hohlt den Anmelde Namen
   const benutzerName = document.getElementById('benutzerName');
-  if(benutzerName.value !== '') {
+
+  if(benutzerName.value === '') {
+    benutzerName.value = '';
+    customer.BenutzerName = benutzerName.value;
+    benutzerName.setAttribute( 'class', 'error2' );
+  }
+  else if(benutzerName.value !== '') {
     benutzerName.classList.remove("error");
     customer.BenutzerName = benutzerName.value;
-  }
-  else {
-    err.push(benutzerName);
-    benutzerName.setAttribute( 'class', 'error' )
   }
 
   //Hohlt das Anmelde Passwort
   const benutzerPW = document.getElementById('benutzerPW');
-  if(benutzerPW.value !== '') {
+
+  if(benutzerPW.value === '') {
+    benutzerPW.value = '';
+    customer.BenutzerPW = benutzerPW.value;
+    benutzerPW.setAttribute( 'class', 'error2' );
+  }
+  else if(benutzerPW.value !== '') {
     benutzerPW.classList.remove("error");
     customer.BenutzerPW = benutzerPW.value;
-  }
-  else {
-    err.push(benutzerPW);
-    benutzerPW.setAttribute( 'class', 'error' )
   }
 
   //#########################################################
 
   //Hohlt die OS daten
   const os = document.getElementById('os');
-  if(os.innerText!== '') {
+  if(os.innerText !== '') {
     os.classList.remove("error");
     
     let system = os.children[0].children[0].innerText
@@ -72,12 +76,12 @@ kundenSave.addEventListener('click', () => {
   }
   else {
     err.push(os);
-    os.setAttribute( 'class', 'error' )
+    os.setAttribute( 'class', 'error' );
   }
 
   //Hohlt die Motherboard daten
   const motherBoard = document.getElementById('motherBoard');
-  if(motherBoard.innerText!== '') {
+  if(motherBoard.innerText !== '') {
     motherBoard.classList.remove("error");
 
     let board = motherBoard.children[0].children[0].innerText;
@@ -99,7 +103,7 @@ kundenSave.addEventListener('click', () => {
   }
   else {
     err.push(motherBoard);
-    motherBoard.setAttribute( 'class', 'error' )
+    motherBoard.setAttribute( 'class', 'error' );
   }
 
   // Hohlt die CPU daten
@@ -220,101 +224,117 @@ kundenSave.addEventListener('click', () => {
 
   // Hohlt die Windows Updates
   const osUpdate = document.getElementById('winUpdates');
-  if(osUpdate.value !== '') {
+
+  if(osUpdate.value === '') {
+    osUpdate.value = '';
     customer.OsUpdate = osUpdate.value;
-    osUpdate.classList.remove("error");
+    osUpdate.setAttribute( 'class', 'error2' );
   }
-  else {
-    err.push(osUpdate);
-    osUpdate.setAttribute( 'class', 'error' )
+  else if(osUpdate.value !== '') {
+    customer.OsUpdate = osUpdate.value;
+    osUpdate.classList.remove("error2");
   }
 
   // Hohlt die schadsoftware Funde
   const schadsoftware = document.getElementById('schadsoftware');
-  if(schadsoftware.value !== '') {
+  if(schadsoftware.value === '') {
+    schadsoftware.value = '';
     customer.Schadsoftware = schadsoftware.value;
-    schadsoftware.classList.remove("error");
+    schadsoftware.setAttribute( 'class', 'error2' );
   }
-  else {
-    err.push(schadsoftware);
-    schadsoftware.setAttribute( 'class', 'error' )
+  else if(schadsoftware.value !== '') {
+    customer.Schadsoftware = schadsoftware.value;
+    schadsoftware.classList.remove("error2");
   }
 
   // Hohlt die Viren Funde
   const virenCheck = document.getElementById('virenCheck');
-  if(virenCheck.value !== '') {
-    virenCheck.classList.remove("error");
+  if(virenCheck.value === '') {
+    virenCheck.value = '';
     customer.VirenCheck = virenCheck.value;
+    virenCheck.setAttribute( 'class', 'error2' );
   }
-  else {
-    err.push(virenCheck);
-    virenCheck.setAttribute( 'class', 'error' )
+  else if(virenCheck.value !== '') {
+    virenCheck.classList.remove("error2");
+    customer.VirenCheck = virenCheck.value;
   }
 
   // Hohlt die CCleaner Bereinigung 
   const ccleanerB = document.getElementById('ccleanerB');
-  if(ccleanerB.value !== '') {
-    ccleanerB.classList.remove("error");
+
+  if(ccleanerB.value === '') {
+    ccleanerB.value = '';
     customer.CcleanerB = ccleanerB.value;
+    ccleanerB.setAttribute( 'class', 'error2' );
   }
-  else {
-    err.push(ccleanerB);
-    ccleanerB.setAttribute( 'class', 'error' )
+  else if(ccleanerB.value !== '') {
+    ccleanerB.classList.remove("error2");
+    customer.CcleanerB = ccleanerB.value;
   }
 
   // Hohlt die CCleaner Registry 1
   const ccleanerR1 = document.getElementById('ccleanerR1');
-  if(ccleanerR1.value !== '') {
-    ccleanerR1.classList.remove("error");
+
+  if(ccleanerR1.value === '') {
+    ccleanerR1.value = '';
     customer.CcleanerR1 = ccleanerR1.value;
+    ccleanerR1.setAttribute( 'class', 'error2' );
   }
-  else {
-    err.push(ccleanerR1);
-    ccleanerR1.setAttribute( 'class', 'error' )
+  else if(ccleanerR1.value !== '') {
+    ccleanerR1.classList.remove("error2");
+    customer.CcleanerR1 = ccleanerR1.value;
   }
 
   // Hohlt die CCleaner Registry 1
   const ccleanerR2 = document.getElementById('ccleanerR2');
-  if(ccleanerR2.value !== '') {
-    ccleanerR2.classList.remove("error");
+
+  if(ccleanerR2.value === '') {
+    ccleanerR2.value = '';
     customer.CcleanerR2 = ccleanerR2.value;
+    ccleanerR2.setAttribute( 'class', 'error2' );
   }
-  else {
-    err.push(ccleanerR2);
-    ccleanerR2.setAttribute( 'class', 'error' )
+  else if(ccleanerR2.value !== '') {
+    ccleanerR2.classList.remove("error2");
+    customer.CcleanerR2 = ccleanerR2.value;
   }
 
   // Hohlt die CCleaner Registry 1
   const ccleanerR3 = document.getElementById('ccleanerR3');
-  if(ccleanerR3.value !== '') {
-    ccleanerR3.classList.remove("error");
+
+  if(ccleanerR3.value === '') {
+    ccleanerR3.value = '';
     customer.CcleanerR3 = ccleanerR3.value;
+    ccleanerR3.setAttribute( 'class', 'error2' );
   }
-  else {
-    err.push(ccleanerR3);
-    ccleanerR3.setAttribute( 'class', 'error' )
+  else if(ccleanerR3.value !== '') {
+    ccleanerR3.classList.remove("error2");
+    customer.CcleanerR3 = ccleanerR3.value;
   }
 
   // Hohlt die Systembereinigung 1
   const systembereinigung1 = document.getElementById('1systembereinigung');
-  if(systembereinigung1.value !== '') {
-    systembereinigung1.classList.remove("error");
+
+  if(systembereinigung1.value === '') {
+    systembereinigung1.value = '';
     customer.Systembereinigung1 = systembereinigung1.value;
+    systembereinigung1.setAttribute( 'class', 'error2' );
   }
-  else {
-    err.push(systembereinigung1);
-    systembereinigung1.setAttribute( 'class', 'error' )
+  else if(systembereinigung1.value !== '') {
+    systembereinigung1.classList.remove("error2");
+    customer.Systembereinigung1 = systembereinigung1.value;
   }
 
   // Hohlt die Systembereinigung 2
   const systembereinigung2 = document.getElementById('2systembereinigung');
-  if(systembereinigung2.value !== '') {
-    systembereinigung2.classList.remove("error");
+
+  if(systembereinigung2.value === '') {
+    systembereinigung2.value = '';
     customer.Systembereinigung2 = systembereinigung2.value;
+    systembereinigung2.setAttribute( 'class', 'error2' );
   }
-  else {
-    err.push(systembereinigung2);
-    systembereinigung2.setAttribute( 'class', 'error' )
+  else if(systembereinigung2.value !== '') {
+    systembereinigung2.classList.remove("error2");
+    customer.Systembereinigung2 = systembereinigung2.value;
   }
 
   // Hohlt hochdruck checkbox
@@ -337,13 +357,14 @@ kundenSave.addEventListener('click', () => {
 
   // Hohlt den Inhalt der Textarea
   const auffäligkeiten = document.getElementById('auffäligkeiten');
-  if(auffäligkeiten.value !== '') {
-    auffäligkeiten.classList.remove("error");
-    customer.Auffäligkeiten = auffäligkeiten.value;
+
+  if(auffäligkeiten.value === '') {
+    customer.Auffäligkeiten = '';
+    auffäligkeiten.setAttribute( 'class', 'error2' )
   }
-  else {
-    err.push(auffäligkeiten);
-    auffäligkeiten.setAttribute( 'class', 'error' )
+  else if(auffäligkeiten.value !== '') {
+    auffäligkeiten.classList.remove("error2");
+    customer.Auffäligkeiten = auffäligkeiten.value;
   }
 
   
@@ -352,213 +373,211 @@ kundenSave.addEventListener('click', () => {
   // Prüft die RadioButtons => luefter
   const luefter = document.getElementsByName('lueftergeraeusch');
 
-  if(luefter[0].checked === true) {
-    luefter[0].parentElement.classList.remove('error');
+  if(luefter[0].checked !== true && luefter[1].checked !== true) {
+    customer.luefter = '';
+    luefter[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(luefter[0].checked === true) {
+    luefter[0].parentElement.classList.remove('error2');
     customer.luefter = luefter[0].value;
   }
   else if(luefter[1].checked === true) {
-    luefter[1].parentElement.classList.remove('error');
+    luefter[1].parentElement.classList.remove('error2');
     customer.luefter = luefter[1].value;
-  }
-  else {
-    err.push(luefter[0].parentElement);
-    luefter[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => powerLed
   const powerLed = document.getElementsByName('powerLed');
-
-  if(powerLed[0].checked === true) {
-    powerLed[0].parentElement.classList.remove('error');
+  if(powerLed[0].checked !== true && powerLed[1].checked !== true) {
+    customer.PowerLed = '';
+    powerLed[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(powerLed[0].checked === true) {
+    powerLed[0].parentElement.classList.remove('error2');
     customer.PowerLed = powerLed[0].value;
   }
   else if(powerLed[1].checked === true) {
-    powerLed[1].parentElement.classList.remove('error');
+    powerLed[1].parentElement.classList.remove('error2');
     customer.PowerLed = powerLed[1].value;
-  }
-  else {
-    err.push(powerLed[0].parentElement);
-    powerLed[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => cpuRam
   const cpuRam = document.getElementsByName('cpuRam');
 
-  if(cpuRam[0].checked === true) {
+  if(cpuRam[0].checked !== true && cpuRam[1].checked !== true) {
+    customer.CpuRam = '';
+    cpuRam[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(cpuRam[0].checked === true) {
     customer.CpuRam = cpuRam[0].value;
-    cpuRam[0].parentElement.classList.remove('error');
+    cpuRam[0].parentElement.classList.remove('error2');
   }
   else if(cpuRam[1].checked === true) {
-    cpuRam[1].parentElement.classList.remove('error');
+    cpuRam[1].parentElement.classList.remove('error2');
     customer.CpuRam = cpuRam[1].value;
-  }
-  else {
-    err.push(cpuRam[0].parentElement);
-    cpuRam[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => hdSsd
   const hdSsd = document.getElementsByName('hdSsd');
 
-  if(hdSsd[0].checked === true) {
-    hdSsd[0].parentElement.classList.remove('error');
+  if(hdSsd[0].checked !== true && hdSsd[1].checked !== true) {
+    customer.HdSsd = '';
+    hdSsd[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(hdSsd[0].checked === true) {
+    hdSsd[0].parentElement.classList.remove('error2');
     customer.HdSsd = hdSsd[0].value;
   }
   else if(hdSsd[1].checked === true) {
-    hdSsd[1].parentElement.classList.remove('error');
+    hdSsd[1].parentElement.classList.remove('error2');
     customer.HdSsd = hdSsd[1].value;
-  }
-  else {
-    err.push(hdSsd[0].parentElement);
-    hdSsd[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => winAktiv
   const winAktiv = document.getElementsByName('winAktiv');
 
-  if(winAktiv[0].checked === true) {
-    winAktiv[0].parentElement.classList.remove('error');("error");
+  if(winAktiv[0].checked !== true && winAktiv[1].checked !== true) {
+    customer.winAktiv = '';
+    winAktiv[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(winAktiv[0].checked === true) {
+    winAktiv[0].parentElement.classList.remove('error2');
     customer.winAktiv = winAktiv[0].value;
   }
   else if(winAktiv[1].checked === true) {
-    winAktiv[1].parentElement.classList.remove('error');("error");
+    winAktiv[1].parentElement.classList.remove('error2');
     customer.winAktiv = winAktiv[1].value;
-  }
-  else {
-    err.push(winAktiv[0].parentElement);
-    winAktiv[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => gerät
   const gerät = document.getElementsByName('gerät');
 
-  if(gerät[0].checked === true) {
-    gerät[0].parentElement.classList.remove('error');("error");
+  if(gerät[0].checked !== true && gerät[1].checked !== true) {
+    customer.Gerät = '';
+    gerät[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(gerät[0].checked === true) {
+    gerät[0].parentElement.classList.remove('error2');
     customer.Gerät = gerät[0].value;
   }
   else if(gerät[1].checked === true) {
-    gerät[1].parentElement.classList.remove('error');("error");
+    gerät[1].parentElement.classList.remove('error2');
     customer.Gerät = gerät[1].value;
-  }
-  else {
-    err.push(gerät[0].parentElement);
-    gerät[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => frontSound
   const frontSound = document.getElementsByName('frontSound');
 
-  if(frontSound[0].checked === true) {
-    frontSound[0].parentElement.classList.remove('error');("error");
+  if(frontSound[0].checked !== true && frontSound[1].checked !== true) {
+    customer.FrontSound = '';
+    frontSound[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(frontSound[0].checked === true) {
+    frontSound[0].parentElement.classList.remove('error2');
     customer.FrontSound = frontSound[0].value;
   }
   else if(frontSound[1].checked === true) {
-    frontSound[1].parentElement.classList.remove('error');("error");
+    frontSound[1].parentElement.classList.remove('error2');
     customer.FrontSound = frontSound[1].value;
-  }
-  else {
-    err.push(frontSound[0].parentElement);
-    frontSound[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => rearSound
   const rearSound = document.getElementsByName('rearSound');
 
-  if(rearSound[0].checked === true) {
-    rearSound[0].parentElement.classList.remove('error');("error");
+  if(rearSound[0].checked !== true && rearSound[1].checked !== true) {
+    customer.RearSound = '';
+    rearSound[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(rearSound[0].checked === true) {
+    rearSound[0].parentElement.classList.remove('error2');
     customer.RearSound = rearSound[0].value;
   }
   else if(rearSound[1].checked === true) {
-    rearSound[1].parentElement.classList.remove('error');("error");
+    rearSound[1].parentElement.classList.remove('error2');
     customer.RearSound = rearSound[1].value;
-  }
-  else {
-    err.push(rearSound[0].parentElement);
-    rearSound[0].parentElement.setAttribute( 'class', 'error' )
   }
 
   // Prüft die RadioButtons => frontUSB
   const frontUSB = document.getElementsByName('frontUSB');
 
-  if(frontUSB[0].checked === true) {
-    frontUSB[0].parentElement.classList.remove('error');("error");
+  if(frontUSB[0].checked !== true && frontUSB[1].checked !== true) {
+    customer.FrontUSB = '';
+    frontUSB[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(frontUSB[0].checked === true) {
+    frontUSB[0].parentElement.classList.remove('error2');
     customer.FrontUSB = frontUSB[0].value;
   }
   else if(frontUSB[1].checked === true) {
-    frontUSB[1].parentElement.classList.remove('error');("error");
+    frontUSB[1].parentElement.classList.remove('error2');
     customer.FrontUSB = frontUSB[1].value;
-  }
-  else {
-    err.push(frontUSB[0].parentElement);
-    frontUSB[0].parentElement.setAttribute( 'class', 'error' );
   }
 
   // Prüft die RadioButtons => rearUSB
   const rearUSB = document.getElementsByName('rearUSB');
 
-  if(rearUSB[0].checked === true) {
-    rearUSB[0].parentElement.classList.remove('error');("error");
+  if(rearUSB[0].checked !== true && rearUSB[1].checked !== true) {
+    customer.RearUSB = '';
+    rearUSB[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(rearUSB[0].checked === true) {
+    rearUSB[0].parentElement.classList.remove('error2');
     customer.RearUSB = rearUSB[0].value;
   }
   else if(rearUSB[1].checked === true) {
-    rearUSB[1].parentElement.classList.remove('error');("error");
+    rearUSB[1].parentElement.classList.remove('error2');
     customer.RearUSB = rearUSB[1].value;
-  }
-  else {
-    err.push(rearUSB[0].parentElement);
-    rearUSB[0].parentElement.setAttribute( 'class', 'error' );
   }
 
   // Prüft die RadioButtons => cdDVD
   const cdDVD = document.getElementsByName('cdDVD');
 
-  if(cdDVD[0].checked === true) {
-    cdDVD[0].parentElement.classList.remove('error');("error");
+  if(cdDVD[0].checked !== true && cdDVD[1].checked !== true) {
+    customer.CdDVD = '';
+    cdDVD[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(cdDVD[0].checked === true) {
+    cdDVD[0].parentElement.classList.remove('error2');
     customer.CdDVD = cdDVD[0].value;
   }
   else if(cdDVD[1].checked === true) {
-    cdDVD[1].parentElement.classList.remove('error');("error");
+    cdDVD[1].parentElement.classList.remove('error2');
     customer.CdDVD = cdDVD[1].value;
-  }
-  else {
-    err.push(cdDVD[0].parentElement);
-    cdDVD[0].parentElement.setAttribute( 'class', 'error' );
   }
 
   // Prüft die RadioButtons => lan
   const lan = document.getElementsByName('lan');
 
-  if(lan[0].checked === true) {
-    lan[0].parentElement.classList.remove('error');("error");
+  if(lan[0].checked !== true && lan[1].checked !== true) {
+    customer.Lan = '';
+    lan[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(lan[0].checked === true) {
+    lan[0].parentElement.classList.remove('error2');
     customer.Lan = lan[0].value;
   }
   else if(lan[1].checked === true) {
-    lan[1].parentElement.classList.remove('error');("error");
+    lan[1].parentElement.classList.remove('error2');
     customer.Lan = lan[1].value;
   }
-  else {
-    err.push(lan[0].parentElement);
-    lan[0].parentElement.setAttribute( 'class', 'error' );
-  }
 
-  // Prüft die RadioButtons => lan
+  // Prüft die RadioButtons => wlan
   const wlan = document.getElementsByName('wlan');
 
-  if(wlan[0].checked === true) {
-    wlan[0].parentElement.classList.remove('error');("error");
+  if(wlan[0].checked !== true && wlan[1].checked !== true) {
+    customer.Wlan = '';
+    wlan[0].parentElement.setAttribute( 'class', 'error2' );
+  }
+  else if(wlan[0].checked === true) {
+    wlan[0].parentElement.classList.remove('error2');
     customer.Wlan = wlan[0].value;
   }
   else if(wlan[1].checked === true) {
-    wlan[1].parentElement.classList.remove('error');("error");
+    wlan[1].parentElement.classList.remove('error2');
     customer.Wlan = wlan[1].value;
   }
-  else {
-    err.push(wlan[0].parentElement);
-    wlan[0].parentElement.setAttribute( 'class', 'error' );
-  }
 
 
-  // todo: dynamisch erstellen des kunden ordners
   const pfad = `kunden\\${auftragsnr.value}.json`;
   
   if(err.length === 0) {
