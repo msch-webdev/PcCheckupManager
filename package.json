@@ -1,5 +1,5 @@
 {
-  "name": "ordanaCheckupManager",
+  "name": "PcCheckupManager",
   "version": "1.0.0",
   "description": "Checkup Manager für Kundenrechner",
   "main": "main.js",
