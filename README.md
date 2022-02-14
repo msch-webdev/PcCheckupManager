@@ -5,10 +5,10 @@ Ein auf Electron basierende App um Hardwaredaten eines Kunden Pc´s abzufragen u
 
 Wie z.B.
 
--OS version /n
--Bios version
--CPU
--RAM
--Grafikkarte
--Festplatten
--Festplattenspeicher
+-OS version  
+-Bios version  
+-CPU  
+-RAM  
+-Grafikkarte  
+-Festplatten  
+-Festplattenspeicher  
