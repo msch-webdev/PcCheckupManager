@@ -1,32 +1,44 @@
 'use strict';
-let customer = {};
-const fs = require('fs');
+
+const { jsPDF } = require("jspdf");
 
 // Leert das err Array
 let err = [];
 
 //Eventlistener zum Speichern der Daten in JSON
 const kundenSave = document.getElementById('kunde-save');
-kundenSave.addEventListener('click', () => {
-  // Cleart die Konsole
-  //console.clear();
-  
+
+kundenSave.addEventListener('click', () => {  
+  //für jsPDF
+  // erstellt neues PDF document
+  const doc = new jsPDF();
+  doc.setFontSize(25);
+  doc.text("ordana Checkup", 105, 20,  "center");
+  doc.line(70,21,140,21);
+
+  // Schriftgroesse
+  const fontSize = 10;
+  doc.setFontSize(fontSize);
+
+  // Zeilenhoehe
+  let yZeileLeft = 0;
 
   // Hohlt Aktuelles Datum
   const heute = document.getElementById('datum');
   if(heute.innerText !== '') {
-    customer.Date = heute.innerText;
+    doc.text(`Datum: ${heute.innerText}`, 100, 30);
   }
   
   //Hohlt die Auftragsnr.
   const auftragsnr = document.getElementById('auftrag');
+
   if(auftragsnr.value !== '') {
     auftragsnr.classList.remove("error");
-    customer.Order = auftragsnr.value;
+    doc.text(`Auftragsnr.: ${auftragsnr.value}`, 10, 30, "left");
   }
   else {
     err.push(auftragsnr);
-    auftragsnr.setAttribute( 'class', 'error' )
+    auftragsnr.setAttribute( 'class', 'error' );
   }
 
   //Hohlt den Anmelde Namen
@@ -34,12 +46,12 @@ kundenSave.addEventListener('click', () => {
 
   if(benutzerName.value === '') {
     benutzerName.value = '';
-    customer.BenutzerName = benutzerName.value;
     benutzerName.setAttribute( 'class', 'error2' );
+    doc.text(`Benutzer: ${benutzerName.value}`, 10, 35, "left");
   }
   else if(benutzerName.value !== '') {
     benutzerName.classList.remove("error");
-    customer.BenutzerName = benutzerName.value;
+    doc.text(`Benutzer: ${benutzerName.value}`, 10, 35, "left");
   }
 
   //Hohlt das Anmelde Passwort
@@ -47,32 +59,40 @@ kundenSave.addEventListener('click', () => {
 
   if(benutzerPW.value === '') {
     benutzerPW.value = '';
-    customer.BenutzerPW = benutzerPW.value;
     benutzerPW.setAttribute( 'class', 'error2' );
+    doc.text(`Passwort: ${benutzerPW.value}`, 100, 35);
   }
   else if(benutzerPW.value !== '') {
     benutzerPW.classList.remove("error");
-    customer.BenutzerPW = benutzerPW.value;
+    doc.text(`Passwort: ${benutzerPW.value}`, 100, 35);
   }
 
-  //#########################################################
+  doc.line(10,38,200,38);
 
+  //#########################################################
+  // HARDWARE
+  doc.setFontSize(16);
+  doc.text("Hardware:", 10, 45, "left");
+  doc.line(10,46,35,46);
+
+  doc.setFontSize(fontSize);
   //Hohlt die OS daten
+
+  yZeileLeft = 52;
   const os = document.getElementById('os');
   if(os.innerText !== '') {
     os.classList.remove("error");
     
-    let system = os.children[0].children[0].innerText
     let betriebOs = os.children[0].children[1].innerText
     let update = os.children[0].children[2].innerText
-    
-    system = system.split(':');
-    betriebOs = betriebOs.split(':');
-    update = update.split(':');
+    // betriebOs = betriebOs.split(':');
+    // update = update.split(':');
+    doc.setFont("carlito","bold");
+    doc.text(`Betriebssystem:`, 10, yZeileLeft); // 52
+    doc.setFont("carlito","normal");
 
-    customer.System = system[1].trim();
-    customer.Os = betriebOs[1].trim();
-    customer.Update = update[1].trim();
+    doc.text(`${betriebOs}`, 10, yZeileLeft += 5); // 57
+    doc.text(`${update}`, 10, yZeileLeft += 5); // 62
   }
   else {
     err.push(os);
@@ -88,17 +108,15 @@ kundenSave.addEventListener('click', () => {
     let model = motherBoard.children[0].children[1].innerText;
     let version = motherBoard.children[0].children[2].innerText;
     let bios = motherBoard.children[0].children[3].innerText;
+    
+    doc.setFont("carlito","bold");
+    doc.text(`Motherboard:`, 10, yZeileLeft += 8); // 70
+    doc.setFont("carlito","normal");
 
-    board = board.split(':');
-    model = model.split(':');
-    version = version.split(':');
-    bios = bios.split(':');
-   
-
-    customer.board = board[1].trim();
-    customer.model = model[1].trim();
-    customer.version = version[1].trim();
-    customer.bios = bios[1].trim() + bios[2];
+    doc.text(`${board}`, 10, yZeileLeft += 5); // 75
+    doc.text(`${model}`, 10, yZeileLeft += 5);// 80
+    doc.text(`${version}`, 10, yZeileLeft += 5);// 85
+    doc.text(`${bios}`, 10, yZeileLeft += 5); // 90
 
   }
   else {
@@ -115,14 +133,13 @@ kundenSave.addEventListener('click', () => {
     let cpuModel = cpu.children[0].children[1].innerText;
     let cores = cpu.children[0].children[2].innerText;
 
-    cpuVendor = cpuVendor.split(':');
-    cpuModel = cpuModel.split(':');
-    cores = cores.split(':');
+    doc.setFont("carlito","bold");
+    doc.text(`CPU:`, 10, yZeileLeft += 7); // 97
+    doc.setFont("carlito","normal");
 
-    customer.cpuManufacturer = cpuVendor[1].trim();
-    customer.cpuModel = cpuModel[1].trim();
-    customer.cores = cores[1].trim();
-
+    doc.text(`${cpuVendor}`, 10, yZeileLeft += 5); //102
+    doc.text(`${cpuModel}`, 10, yZeileLeft += 5); // 107
+    doc.text(`${cores}`, 10, yZeileLeft += 5); // 112
   }
   else {
     err.push(cpu);
@@ -136,9 +153,11 @@ kundenSave.addEventListener('click', () => {
 
     let ram = memoryGb.innerText;
 
-    ram = ram.split(':');
+    doc.setFont("carlito","bold");
+    doc.text(`RAM:`, 10, yZeileLeft += 7);
+    doc.setFont("carlito","normal");
 
-    customer.ram = ram[1].trim()
+    doc.text(`${ram}`, 10, yZeileLeft += 5);
   }
   else {
     err.push(memoryGb);
@@ -151,17 +170,19 @@ kundenSave.addEventListener('click', () => {
     grafik.classList.remove("error");
     let count = grafik.children;
 
-    customer.Gpu = [];
+    doc.setFont("carlito","bold");
+    doc.text(`Grafik:`, 10, yZeileLeft += 7);
+    doc.setFont("carlito","normal");
 
     for (let i = 0; i < count.length; i++) {
 
       let gpuModel = grafik.children[i].children[0].innerText;
       let gpuRam = grafik.children[i].children[1].innerText;
 
-      gpuModel = gpuModel.split(':');
-      gpuRam = gpuRam.split(':');
 
-      customer.Gpu[i] = {GPUmodel : gpuModel[1].trim(), GPUram: gpuRam[1].trim()};
+      doc.text(`${gpuModel}`, 10, yZeileLeft += 5);
+      doc.text(`${gpuRam}`, 10, yZeileLeft += 5);
+      doc.text(` `, 10, yZeileLeft += 2);
     }
   }
   else {
@@ -175,21 +196,19 @@ kundenSave.addEventListener('click', () => {
   if(festplatte.innerText!== '') {
     festplatte.classList.remove("error");
     let count = festplatte.children;
-    customer.Festplatten = [];
+
+    doc.setFont("carlito","bold");
+    doc.text(`Laufwerke:`, 10, yZeileLeft += 7);
+    doc.setFont("carlito","normal");
 
     for (let i = 0; i < count.length; i++) {
 
       let hdName = festplatte.children[i].children[0].innerText;
       let hdtype = festplatte.children[i].children[1].innerText;
-      let hdInterface = festplatte.children[i].children[2].innerText;
 
-
-      hdName = hdName.split(':');
-      hdtype = hdtype.split(':');
-      hdInterface = hdInterface.split(':');
-
-      customer.Festplatten[i] = {HDname : hdName[1].trim(), HDtype: hdtype[1].trim(), HDinterface: hdInterface[1].trim()};
-      
+      doc.text(`${hdName}`, 10, yZeileLeft += 5);
+      doc.text(`${hdtype}`, 10, yZeileLeft += 5);
+      doc.text(` `, 10, yZeileLeft += 2);
     }
 
   }
@@ -203,7 +222,10 @@ kundenSave.addEventListener('click', () => {
   if(laufwerke.innerText!== '') {
     laufwerke.classList.remove("error");
     let count = laufwerke.children;
-    customer.Laufwerke = [];
+
+    doc.setFont("carlito","bold");
+    doc.text(`Partitionen:`, 10, yZeileLeft += 7);
+    doc.setFont("carlito","normal");
 
     for (let i = 0; i < count.length; i++) {
 
@@ -211,8 +233,8 @@ kundenSave.addEventListener('click', () => {
       let lwFree = laufwerke.children[i].children[1].innerText;
       let lwFull = laufwerke.children[i].children[2].innerText;
 
-      customer.Laufwerke[i] = {Path : lwName[0].trim(), Free: lwFree, Full: lwFull};
-
+      doc.text(`${lwName} ${lwFree} frei von ${lwFull}`, 10, yZeileLeft += 5);
+      doc.text(` `, 10, yZeileLeft += 2);
     }
   }
   else {
@@ -221,373 +243,58 @@ kundenSave.addEventListener('click', () => {
   }
 
   //#########################################################
+  // Auszuführende Arbeiten
+  let yZeileRight = 45;
+  doc.setFontSize(16);
+  doc.text("Auszuführende Arbeiten:", 100, yZeileRight);
+  doc.line(100,46,160,46);
 
-  // Hohlt die Windows Updates
-  const osUpdate = document.getElementById('winUpdates');
+  doc.setFontSize(fontSize);
 
-  if(osUpdate.value === '') {
-    osUpdate.value = '';
-    customer.OsUpdate = osUpdate.value;
-    osUpdate.setAttribute( 'class', 'error2' );
-  }
-  else if(osUpdate.value !== '') {
-    customer.OsUpdate = osUpdate.value;
-    osUpdate.classList.remove("error2");
-  }
+  doc.text("Schadsoftware Check:",100,yZeileRight += 7);
+  doc.text("Unötige Tools entfernt:",100,yZeileRight += 7);
+  doc.text("Windows Versions Update:",100,yZeileRight += 20);
+  doc.text("CC Bereinigung: ",100,yZeileRight += 7);
+  doc.text("CC 1. Registry Check: ",100,yZeileRight += 7);
+  doc.text("CC 2. Registry Check: ",100,yZeileRight += 7);
+  doc.text("1. + 2. Systembereinigung:",100,yZeileRight += 7);
+  doc.text("Windows Updates: ",100,yZeileRight += 7);
+  doc.text("Treiber installiert: ",100,yZeileRight += 7);
+  doc.text("Gerät innen mit Hochdruck gereinigt: ",100,yZeileRight += 7);
+  doc.text("Gerät außen gereinigt: ",100,yZeileRight += 7);
+  doc.text("Auffäligkeiten (Kurzbericht) ",100,yZeileRight += 7);
 
-  // Hohlt die schadsoftware Funde
-  const schadsoftware = document.getElementById('schadsoftware');
-  if(schadsoftware.value === '') {
-    schadsoftware.value = '';
-    customer.Schadsoftware = schadsoftware.value;
-    schadsoftware.setAttribute( 'class', 'error2' );
-  }
-  else if(schadsoftware.value !== '') {
-    customer.Schadsoftware = schadsoftware.value;
-    schadsoftware.classList.remove("error2");
-  }
-
-  // Hohlt die Viren Funde
-  const virenCheck = document.getElementById('virenCheck');
-  if(virenCheck.value === '') {
-    virenCheck.value = '';
-    customer.VirenCheck = virenCheck.value;
-    virenCheck.setAttribute( 'class', 'error2' );
-  }
-  else if(virenCheck.value !== '') {
-    virenCheck.classList.remove("error2");
-    customer.VirenCheck = virenCheck.value;
-  }
-
-  // Hohlt die CCleaner Bereinigung 
-  const ccleanerB = document.getElementById('ccleanerB');
-
-  if(ccleanerB.value === '') {
-    ccleanerB.value = '';
-    customer.CcleanerB = ccleanerB.value;
-    ccleanerB.setAttribute( 'class', 'error2' );
-  }
-  else if(ccleanerB.value !== '') {
-    ccleanerB.classList.remove("error2");
-    customer.CcleanerB = ccleanerB.value;
-  }
-
-  // Hohlt die CCleaner Registry 1
-  const ccleanerR1 = document.getElementById('ccleanerR1');
-
-  if(ccleanerR1.value === '') {
-    ccleanerR1.value = '';
-    customer.CcleanerR1 = ccleanerR1.value;
-    ccleanerR1.setAttribute( 'class', 'error2' );
-  }
-  else if(ccleanerR1.value !== '') {
-    ccleanerR1.classList.remove("error2");
-    customer.CcleanerR1 = ccleanerR1.value;
-  }
-
-  // Hohlt die CCleaner Registry 1
-  const ccleanerR2 = document.getElementById('ccleanerR2');
-
-  if(ccleanerR2.value === '') {
-    ccleanerR2.value = '';
-    customer.CcleanerR2 = ccleanerR2.value;
-    ccleanerR2.setAttribute( 'class', 'error2' );
-  }
-  else if(ccleanerR2.value !== '') {
-    ccleanerR2.classList.remove("error2");
-    customer.CcleanerR2 = ccleanerR2.value;
-  }
-
-  // Hohlt die CCleaner Registry 1
-  const ccleanerR3 = document.getElementById('ccleanerR3');
-
-  if(ccleanerR3.value === '') {
-    ccleanerR3.value = '';
-    customer.CcleanerR3 = ccleanerR3.value;
-    ccleanerR3.setAttribute( 'class', 'error2' );
-  }
-  else if(ccleanerR3.value !== '') {
-    ccleanerR3.classList.remove("error2");
-    customer.CcleanerR3 = ccleanerR3.value;
-  }
-
-  // Hohlt die Systembereinigung 1
-  const systembereinigung1 = document.getElementById('1systembereinigung');
-
-  if(systembereinigung1.value === '') {
-    systembereinigung1.value = '';
-    customer.Systembereinigung1 = systembereinigung1.value;
-    systembereinigung1.setAttribute( 'class', 'error2' );
-  }
-  else if(systembereinigung1.value !== '') {
-    systembereinigung1.classList.remove("error2");
-    customer.Systembereinigung1 = systembereinigung1.value;
-  }
-
-  // Hohlt die Systembereinigung 2
-  const systembereinigung2 = document.getElementById('2systembereinigung');
-
-  if(systembereinigung2.value === '') {
-    systembereinigung2.value = '';
-    customer.Systembereinigung2 = systembereinigung2.value;
-    systembereinigung2.setAttribute( 'class', 'error2' );
-  }
-  else if(systembereinigung2.value !== '') {
-    systembereinigung2.classList.remove("error2");
-    customer.Systembereinigung2 = systembereinigung2.value;
-  }
-
-  // Hohlt hochdruck checkbox
-  const hochdruck = document.getElementById('hochdruck');
-  if(hochdruck.checked === true) {
-    customer.Hochdruck = hochdruck.value;
-  }
-  else {
-    customer.Hochdruck = '__';
-  }
-
-  // Hohlt Gereinigt checkbox
-  const gereinigt = document.getElementById('gereinigt');
-  if(gereinigt.checked === true) {
-    customer.Gereinigt = gereinigt.value;
-  }
-  else {
-    customer.Gereinigt = '__';
-  }
-
-  // Hohlt den Inhalt der Textarea
-  const auffäligkeiten = document.getElementById('auffäligkeiten');
-
-  if(auffäligkeiten.value === '') {
-    customer.Auffäligkeiten = '';
-    auffäligkeiten.setAttribute( 'class', 'error2' )
-  }
-  else if(auffäligkeiten.value !== '') {
-    auffäligkeiten.classList.remove("error2");
-    customer.Auffäligkeiten = auffäligkeiten.value;
-  }
-
-  
   //#########################################################
+  // Endkontrolle
 
-  // Prüft die RadioButtons => luefter
-  const luefter = document.getElementsByName('lueftergeraeusch');
+  doc.setFontSize(16);
+  doc.text("Endkontrolle:", 100, yZeileRight += 30);
+  doc.line(100,yZeileRight += 1,135,yZeileRight);
 
-  if(luefter[0].checked !== true && luefter[1].checked !== true) {
-    customer.luefter = '';
-    luefter[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(luefter[0].checked === true) {
-    luefter[0].parentElement.classList.remove('error2');
-    customer.luefter = luefter[0].value;
-  }
-  else if(luefter[1].checked === true) {
-    luefter[1].parentElement.classList.remove('error2');
-    customer.luefter = luefter[1].value;
-  }
+  doc.setFontSize(fontSize);
+  doc.text("Alle Lüfter drehen Geräuschlos: ",100,yZeileRight += 6);
+  doc.text("Power/HD in Betrieb LED´s funktionieren: ",100,yZeileRight += 6);
+  doc.text("CPU und Speicher werden korrekt erkannt: ",100,yZeileRight += 6);
+  doc.text("HD/SSD wird korrekt erkannt: ",100,yZeileRight += 6);
+  doc.text("Windows ist aktiviert: ",100,yZeileRight += 6);
+  doc.text("Gerätemanager zeigt keine Ausrufezeichen: ",100,yZeileRight += 6);
+  doc.text("Front Sound funktioniert: ",100,yZeileRight += 6);
+  doc.text("Rear Sound funktioniert: ",100,yZeileRight += 6);
+  doc.text("Front USB funktioniert: ",100,yZeileRight += 6);
+  doc.text("Rear USB funktioniert: ",100,yZeileRight += 6);
+  doc.text("CD/DVD öffnet und liest Medien: ",100,yZeileRight += 6);
+  doc.text("LAN Funktioniert: ",100,yZeileRight += 6);
+  doc.text("WLAN Funktioniert: ",100,yZeileRight += 6);
+  doc.text("Datenschutz: ",100,yZeileRight += 6);
+  doc.text("Systemschutz eingerichtet: ",100,yZeileRight += 6);
 
-  // Prüft die RadioButtons => powerLed
-  const powerLed = document.getElementsByName('powerLed');
-  if(powerLed[0].checked !== true && powerLed[1].checked !== true) {
-    customer.PowerLed = '';
-    powerLed[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(powerLed[0].checked === true) {
-    powerLed[0].parentElement.classList.remove('error2');
-    customer.PowerLed = powerLed[0].value;
-  }
-  else if(powerLed[1].checked === true) {
-    powerLed[1].parentElement.classList.remove('error2');
-    customer.PowerLed = powerLed[1].value;
-  }
-
-  // Prüft die RadioButtons => cpuRam
-  const cpuRam = document.getElementsByName('cpuRam');
-
-  if(cpuRam[0].checked !== true && cpuRam[1].checked !== true) {
-    customer.CpuRam = '';
-    cpuRam[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(cpuRam[0].checked === true) {
-    customer.CpuRam = cpuRam[0].value;
-    cpuRam[0].parentElement.classList.remove('error2');
-  }
-  else if(cpuRam[1].checked === true) {
-    cpuRam[1].parentElement.classList.remove('error2');
-    customer.CpuRam = cpuRam[1].value;
-  }
-
-  // Prüft die RadioButtons => hdSsd
-  const hdSsd = document.getElementsByName('hdSsd');
-
-  if(hdSsd[0].checked !== true && hdSsd[1].checked !== true) {
-    customer.HdSsd = '';
-    hdSsd[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(hdSsd[0].checked === true) {
-    hdSsd[0].parentElement.classList.remove('error2');
-    customer.HdSsd = hdSsd[0].value;
-  }
-  else if(hdSsd[1].checked === true) {
-    hdSsd[1].parentElement.classList.remove('error2');
-    customer.HdSsd = hdSsd[1].value;
-  }
-
-  // Prüft die RadioButtons => winAktiv
-  const winAktiv = document.getElementsByName('winAktiv');
-
-  if(winAktiv[0].checked !== true && winAktiv[1].checked !== true) {
-    customer.winAktiv = '';
-    winAktiv[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(winAktiv[0].checked === true) {
-    winAktiv[0].parentElement.classList.remove('error2');
-    customer.winAktiv = winAktiv[0].value;
-  }
-  else if(winAktiv[1].checked === true) {
-    winAktiv[1].parentElement.classList.remove('error2');
-    customer.winAktiv = winAktiv[1].value;
-  }
-
-  // Prüft die RadioButtons => gerät
-  const gerät = document.getElementsByName('gerät');
-
-  if(gerät[0].checked !== true && gerät[1].checked !== true) {
-    customer.Gerät = '';
-    gerät[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(gerät[0].checked === true) {
-    gerät[0].parentElement.classList.remove('error2');
-    customer.Gerät = gerät[0].value;
-  }
-  else if(gerät[1].checked === true) {
-    gerät[1].parentElement.classList.remove('error2');
-    customer.Gerät = gerät[1].value;
-  }
-
-  // Prüft die RadioButtons => frontSound
-  const frontSound = document.getElementsByName('frontSound');
-
-  if(frontSound[0].checked !== true && frontSound[1].checked !== true) {
-    customer.FrontSound = '';
-    frontSound[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(frontSound[0].checked === true) {
-    frontSound[0].parentElement.classList.remove('error2');
-    customer.FrontSound = frontSound[0].value;
-  }
-  else if(frontSound[1].checked === true) {
-    frontSound[1].parentElement.classList.remove('error2');
-    customer.FrontSound = frontSound[1].value;
-  }
-
-  // Prüft die RadioButtons => rearSound
-  const rearSound = document.getElementsByName('rearSound');
-
-  if(rearSound[0].checked !== true && rearSound[1].checked !== true) {
-    customer.RearSound = '';
-    rearSound[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(rearSound[0].checked === true) {
-    rearSound[0].parentElement.classList.remove('error2');
-    customer.RearSound = rearSound[0].value;
-  }
-  else if(rearSound[1].checked === true) {
-    rearSound[1].parentElement.classList.remove('error2');
-    customer.RearSound = rearSound[1].value;
-  }
-
-  // Prüft die RadioButtons => frontUSB
-  const frontUSB = document.getElementsByName('frontUSB');
-
-  if(frontUSB[0].checked !== true && frontUSB[1].checked !== true) {
-    customer.FrontUSB = '';
-    frontUSB[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(frontUSB[0].checked === true) {
-    frontUSB[0].parentElement.classList.remove('error2');
-    customer.FrontUSB = frontUSB[0].value;
-  }
-  else if(frontUSB[1].checked === true) {
-    frontUSB[1].parentElement.classList.remove('error2');
-    customer.FrontUSB = frontUSB[1].value;
-  }
-
-  // Prüft die RadioButtons => rearUSB
-  const rearUSB = document.getElementsByName('rearUSB');
-
-  if(rearUSB[0].checked !== true && rearUSB[1].checked !== true) {
-    customer.RearUSB = '';
-    rearUSB[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(rearUSB[0].checked === true) {
-    rearUSB[0].parentElement.classList.remove('error2');
-    customer.RearUSB = rearUSB[0].value;
-  }
-  else if(rearUSB[1].checked === true) {
-    rearUSB[1].parentElement.classList.remove('error2');
-    customer.RearUSB = rearUSB[1].value;
-  }
-
-  // Prüft die RadioButtons => cdDVD
-  const cdDVD = document.getElementsByName('cdDVD');
-
-  if(cdDVD[0].checked !== true && cdDVD[1].checked !== true) {
-    customer.CdDVD = '';
-    cdDVD[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(cdDVD[0].checked === true) {
-    cdDVD[0].parentElement.classList.remove('error2');
-    customer.CdDVD = cdDVD[0].value;
-  }
-  else if(cdDVD[1].checked === true) {
-    cdDVD[1].parentElement.classList.remove('error2');
-    customer.CdDVD = cdDVD[1].value;
-  }
-
-  // Prüft die RadioButtons => lan
-  const lan = document.getElementsByName('lan');
-
-  if(lan[0].checked !== true && lan[1].checked !== true) {
-    customer.Lan = '';
-    lan[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(lan[0].checked === true) {
-    lan[0].parentElement.classList.remove('error2');
-    customer.Lan = lan[0].value;
-  }
-  else if(lan[1].checked === true) {
-    lan[1].parentElement.classList.remove('error2');
-    customer.Lan = lan[1].value;
-  }
-
-  // Prüft die RadioButtons => wlan
-  const wlan = document.getElementsByName('wlan');
-
-  if(wlan[0].checked !== true && wlan[1].checked !== true) {
-    customer.Wlan = '';
-    wlan[0].parentElement.setAttribute( 'class', 'error2' );
-  }
-  else if(wlan[0].checked === true) {
-    wlan[0].parentElement.classList.remove('error2');
-    customer.Wlan = wlan[0].value;
-  }
-  else if(wlan[1].checked === true) {
-    wlan[1].parentElement.classList.remove('error2');
-    customer.Wlan = wlan[1].value;
-  }
-
-
-  const pfad = `kunden\\${auftragsnr.value}.json`;
+  doc.text("Check durchgeführt von: ",10,yZeileRight += 28);
+  
   
   if(err.length === 0) {
-    
-    const jsonData = JSON.stringify(customer, null, 2);
 
-    fs.writeFile(pfad, jsonData, (err) => {
-      if(err) console.log('error', err);
-    })
-    
+   
+    doc.save(`./kunden/${auftragsnr.value}.pdf`);
   }
   else {
     console.log('Error Array => ', err);

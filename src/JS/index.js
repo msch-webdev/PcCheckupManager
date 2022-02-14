@@ -13,14 +13,6 @@ const datum = () => {
 datum();
 
 
-// Eventlistener für Button offnet Kunden Vorschau Window
-const windowCustomer = document.getElementById('windowCustomer');
-
-windowCustomer.addEventListener('click', function() {
-  ipcRenderer.send('openCustomerWindow');
-});
-
-
 
 
 

@@ -9,7 +9,7 @@ hardwareBtn.addEventListener('click', () => {
 	si.osInfo().then(data => {
 		console.log('OS => ', data);
 		const betriebsSystem = document.getElementById('os');
-		const builderWin = ['21H1', '20H2', '2004', '1909'];
+		const builderWin = ['21H2','21H1', '20H2', '2004', '1909'];
 		let update = '';
 		// platform => 'linux', 'darwin', 'win32', ...
 		let platt = data.platform;
@@ -19,14 +19,17 @@ hardwareBtn.addEventListener('click', () => {
 		let archi = data.arch;
 		//build => 19043 => 21H1
 		let buildVersion = data.build;
-		if (buildVersion == 19043) {
+
+		if(buildVersion == 22000) {
 			update = builderWin[0];
-		} else if (buildVersion == 19042) {
+		}	else if (buildVersion == 19043) {
 			update = builderWin[1];
-		} else if (buildVersion == 19041) {
+		} else if (buildVersion == 19042) {
 			update = builderWin[2];
-		} else if (buildVersion == 18363) {
+		} else if (buildVersion == 19041) {
 			update = builderWin[3];
+		} else if (buildVersion == 18363) {
+			update = builderWin[4];
 		} else {
 			update = 'n.a.'
 		}
